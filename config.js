@@ -1,8 +1,7 @@
-/* Floxly – configuration. Colle ici l'URL du projet et la clé « anon public » (Supabase > Project Settings > API).
-   JAMAIS la clé « service_role ». La clé anon est faite pour être publique. */
+https://vvwdagebuicnmimnvteu.supabase.cosb_publishable_eAonFFJ3mTWL6ZZxuMsaIA_I-92x05E
 window.FLOXLY_CONFIG = {
-  url: "",
-  anonKey: "",
-  vapidPublicKey: "",   // facultatif : clé publique des notifications push
+  url: "https://vvwdagebuicnmimnvteu.supabase.co",
+  anonKey: "sb_publishable_eAonFFJ3mTWL6ZZxuMsaIA_I-92x05E",
+  vapidPublicKey: "",
   swPath: "/sw.js"
 };
