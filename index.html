@@ -151,6 +151,7 @@ body.nonav nav{display:none}
 #call.vid{background:radial-gradient(260px 240px at 30% 30%,var(--c),transparent 70%),radial-gradient(300px 280px at 80% 60%,var(--b),transparent 70%),#15123F}#call.vid .big{display:none}#call .self{display:none;position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:16px;width:90px;height:130px;border-radius:20px;border:2px solid rgba(255,255,255,.4)}#call.vid .self{display:block}
 .cc{display:flex;gap:16px;margin-top:40px}.cc button{width:62px;height:62px;border-radius:22px;border:0;background:rgba(255,255,255,.14);color:#fff;display:grid;place-items:center}.cc button[aria-pressed=true]{background:#fff;color:#111}.cc .end{background:#e5484d}.cc .end svg{transform:rotate(135deg)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+#ins{position:fixed;left:50%;transform:translateX(-50%);bottom:100px;width:calc(100% - 24px);max-width:406px;z-index:20;background:var(--gl);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--ln);border-radius:20px;box-shadow:var(--sh);padding:14px 16px;font-size:13.5px;color:var(--tx)}body.nonav #ins{bottom:16px}#ins[hidden]{display:none}#ins{pointer-events:none}#ins button{pointer-events:auto}body:not(.insok) #ins{display:none!important}#ins b{display:block;font-size:14.5px;margin-bottom:4px}#ins .r{display:flex;gap:8px;margin-top:10px;justify-content:flex-end}#ins button{font:inherit;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;background:var(--sf);color:var(--tx)}#ins button.go{background:var(--g1);color:#fff;font-weight:600}
 </style>
 <style>
 /* ===== Ajouts version opérationnelle ===== */
@@ -172,6 +173,36 @@ button.st,button.sh,button.ct2,button.ci{font:inherit}button.st{border:0}button.
 #fx form{display:flex;gap:8px;margin-top:10px}#fx input{flex:1;height:42px;border-radius:14px;border:1px solid var(--ln);background:var(--sf);color:var(--tx);padding:0 14px;font:inherit}#fx .snd{width:42px;height:42px}
 #call .cc{margin-top:30px}
 .mn{color:var(--a);cursor:pointer;font-weight:500}
+
+
+/* ===== Lot 3 : publications larges, carrousel, visionneuse, stories groupées, studio, envoi ===== */
+[data-u]{cursor:pointer}
+.po{display:block;padding:14px 0 6px;margin:0 -16px;border-bottom:1px solid var(--ln)}
+.po .ph{display:flex;gap:10px;align-items:center;padding:0 16px 10px}.po .ph .nm{flex:1;display:flex;flex-direction:column;gap:0;min-width:0}.po .ph .nm span{font-size:12px}
+.po .pt{padding:0 16px;margin:6px 0 4px;font-size:14.5px;line-height:1.5}
+.po .ac{max-width:none;padding:6px 10px 2px}
+.car{position:relative}.crs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.crs::-webkit-scrollbar{display:none}
+.sld{flex:none;width:100%;scroll-snap-align:center;aspect-ratio:4/5;background:var(--sf);cursor:zoom-in;position:relative}.sld img{width:100%;height:100%;object-fit:cover;display:block}.miss{width:100%;height:100%;position:relative}.miss em{position:absolute;left:12px;bottom:12px;font-style:normal;font-size:12px;color:#fff;background:rgba(10,8,40,.45);padding:6px 12px;border-radius:999px}
+.cnt{position:absolute;top:12px;right:12px;font-size:12px;font-weight:600;color:#fff;background:rgba(10,8,40,.55);backdrop-filter:blur(8px);padding:4px 10px;border-radius:999px;pointer-events:none}
+.md1 video{width:100%;max-height:75vh;display:block;background:#000}
+#lb{position:fixed;inset:0;z-index:40;background:#000;color:#fff;display:flex;flex-direction:column}.lbh{display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 8px}.lbh .ib{background:rgba(255,255,255,.14);color:#fff;border-color:transparent}
+.lbs{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.lbs::-webkit-scrollbar{display:none}.lbi{flex:none;width:100%;height:100%;scroll-snap-align:center;display:grid;place-items:center}.lbi img{max-width:100%;max-height:100%;object-fit:contain}
+.pv{height:auto;min-height:230px}.pvg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;width:100%;padding:8px}.pvg>div{position:relative;aspect-ratio:1}.pvg img{width:100%;height:100%;object-fit:cover;border-radius:14px}.pvg .ib{position:absolute;top:4px;right:4px;width:28px;height:28px;border-radius:10px;background:rgba(10,8,40,.55);color:#fff}.pvg .eb{aspect-ratio:1;font-size:12px}
+.pv video{max-height:360px}
+.spb{position:absolute;top:calc(env(safe-area-inset-top,0px) + 6px);left:12px;right:12px;display:flex;gap:4px;z-index:3}.spb i{flex:1;height:3px;background:rgba(255,255,255,.3);border-radius:2px;overflow:hidden}.spb b{display:block;height:100%;width:0;background:#fff}.spb i.d b{width:100%}.spb i.a b{animation:stfill linear forwards}@keyframes stfill{to{width:100%}}
+#sv .shd{top:calc(env(safe-area-inset-top,0px) + 16px)}.stap{position:absolute;top:70px;bottom:90px;border:0;background:none;z-index:2}.stap.l{left:0;width:32%}.stap.r{right:0;width:68%}
+.stn{position:absolute;top:6px;right:6px;font-size:10px;font-weight:700;background:rgba(10,8,40,.6);color:#fff;border-radius:999px;padding:1px 6px}
+.st>div{position:relative}
+#studio{background:#07061a;color:#fff}.stv{position:absolute;inset:0;display:grid;place-items:center;background:#000}.stv video{width:100%;height:100%;object-fit:contain}
+.stt{position:absolute;left:16px;right:16px;text-align:center;font-weight:700;font-size:22px;text-shadow:0 2px 10px rgba(0,0,0,.7);pointer-events:none}.stt.haut{top:22%}.stt.milieu{top:48%}.stt.bas{bottom:34%}
+.sth{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 12px) 14px 8px;z-index:2;background:linear-gradient(rgba(0,0,0,.55),transparent)}.sth .ib{background:rgba(255,255,255,.14);color:#fff;border-color:transparent}
+.stl{position:absolute;right:10px;top:90px;display:flex;flex-direction:column;gap:12px;z-index:2}.stl button{border:0;background:none;color:#fff;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px;opacity:.8}.stl button[aria-pressed=true]{opacity:1}.stl .rb{width:44px;height:44px;border-radius:15px;background:rgba(255,255,255,.14);backdrop-filter:blur(12px);display:grid;place-items:center}.stl button[aria-pressed=true] .rb{background:var(--g2)}
+.stp{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px 16px calc(16px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,rgba(5,4,25,.92) 35%);color:#fff}.stp .fld{color:#d6d4f0}.stp input[type=range]{width:100%;accent-color:var(--a)}.stp .cp{background:rgba(255,255,255,.12);color:#fff}.stp .cp[aria-pressed=true]{background:var(--g1)}.stp .fld input:not([type=range]){color:#fff;background:rgba(255,255,255,.1)}.stp .sg button{color:#fff}
+.fxt{position:absolute;left:16px;right:70px;text-align:center;font-weight:700;font-size:22px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.7);z-index:1;pointer-events:none}.fxt.haut{top:18%}.fxt.milieu{top:45%}.fxt.bas{bottom:34%}
+#upl{position:absolute;left:16px;right:16px;top:calc(env(safe-area-inset-top,0px) + 56px);z-index:5;padding:14px 16px;border-radius:22px;background:rgba(10,8,40,.72);backdrop-filter:blur(18px);color:#fff;text-align:center;border:1px solid rgba(255,255,255,.12)}
+#upl svg{width:100%;height:70px;overflow:visible}#upl path{fill:none;stroke-width:6;stroke-linecap:round}#upl .uk{stroke:rgba(255,255,255,.18)}#upl .uf{stroke:url(#upg);stroke:var(--b);stroke-dasharray:0 100;transition:stroke-dasharray .25s linear;filter:drop-shadow(0 0 8px var(--b))}#upl.err .uf{stroke:#e5484d;filter:none}#upl b{display:block;font-size:24px}#upl span{font-size:12.5px;opacity:.85}#upl .fb{margin-top:8px}
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--g2);z-index:50;transition:width .2s}
+@media (prefers-reduced-motion:reduce){.spb i.a b{width:100%}}
 </style>
 
 </head>
@@ -190,7 +221,12 @@ button.st,button.sh,button.ct2,button.ci{font:inherit}button.st{border:0}button.
  <div class="h2" style="margin-top:18px">Communautés pour toi<span data-go="comm">Tout voir</span></div><div class="rail" id="csug"></div>
 </section>
 
-<section class="v full" id="shorts"><div class="stop"><span class="on">Pour toi</span></div><div class="sc" id="scs"></div></section>
+<section class="v full" id="shorts"><div class="stop"><span class="on">Pour toi</span></div><div class="sc" id="scs"></div>
+ <div id="upl" hidden role="status"><svg viewBox="0 0 300 70" aria-hidden="true"><path class="uk" d="M6 52 C 40 52 52 14 96 18 S 160 60 200 34 S 270 12 294 14" pathLength="100"/><path id="uplp" class="uf" d="M6 52 C 40 52 52 14 96 18 S 160 60 200 34 S 270 12 294 14" pathLength="100"/></svg><b id="uplt">0 %</b><span id="upls">Publication en cours…</span><button class="fb" id="uplr" type="button" hidden>Réessayer</button></div></section>
+<section class="v full" id="studio"><div class="stv"><video id="stvid" playsinline loop></video><div class="stt bas" id="stt"></div></div>
+ <div class="sth"><button class="ib" id="stx" aria-label="Retour" data-i="back"></button><b>Studio</b><button class="fb" id="stok" type="button">Suivant</button></div>
+ <div class="stl" id="stl"><button type="button" data-tool="filtres" aria-pressed="true"><span class="rb" data-i="spark"></span>Filtres</button><button type="button" data-tool="vitesse" aria-pressed="false"><span class="rb" data-i="bolt"></span>Vitesse</button><button type="button" data-tool="couper" aria-pressed="false"><span class="rb" data-i="timer"></span>Couper</button><button type="button" data-tool="texte" aria-pressed="false"><span class="rb" data-i="edit"></span>Texte</button><button type="button" data-tool="volume" aria-pressed="false"><span class="rb" data-i="vol"></span>Volume</button><button type="button" data-tool="couverture" aria-pressed="false"><span class="rb" data-i="tri"></span>Couverture</button></div>
+ <div class="stp" id="stp"></div></section>
 
 <section class="v full" id="create">
  <div class="chh" style="justify-content:space-between"><button class="ib" data-go="home" aria-label="Fermer" data-i="x"></button><b>Créer</b><button class="fb" id="cpub" type="button">Publier</button></div>
@@ -248,6 +284,9 @@ button.st,button.sh,button.ct2,button.ci{font:inherit}button.st{border:0}button.
 <button id="orb" aria-label="Fluxus, assistant de Floxly (déplaçable)"></button>
 <div id="fx" role="dialog" aria-label="Fluxus"><b><i></i>Fluxus<button class="ib" id="fxc" aria-label="Fermer Fluxus" style="margin-left:auto;width:34px;height:34px;border-radius:11px" data-i="x"></button></b><p id="fxm"></p><form id="fxf"><input id="fxi" placeholder="Pose une question à Fluxus" aria-label="Question pour Fluxus" autocomplete="off"><button class="snd" aria-label="Envoyer" data-i="send"></button></form></div>
 <div id="gbk" hidden></div><div class="msh" id="gsh" hidden></div><div id="mdl" hidden></div>
+<div id="lb" hidden role="dialog" aria-label="Photos"></div>
+<div id="pbar" hidden></div>
+<div id="ins" hidden role="region" aria-label="Installer Floxly"></div>
 <div class="toast" id="toast" role="status"></div>
 <script src="config.js"></script>
 <script>
@@ -258,7 +297,32 @@ button.st,button.sh,button.ct2,button.ci{font:inherit}button.st{border:0}button.
  d.innerHTML='<h2 style="margin:0 0 12px">Floxly n’est pas encore relié à Supabase</h2><p>Ouvre le fichier <b>config.js</b> et renseigne <b>url</b> et <b>anonKey</b> (Supabase &gt; Project Settings &gt; API), puis recharge la page.</p>';
  document.body.appendChild(d)})}})();
 </script>
+<script>
+/* ---- Installation sur l'écran d'accueil (PWA) : bouton Android/Chrome, consignes iPhone, alerte navigateur intégré ---- */
+document.addEventListener('DOMContentLoaded',()=>document.body.classList.add('insok'));
+(function(){let dp=null;const el=document.getElementById('ins');if(!el)return;
+ const ua=navigator.userAgent||'',ios=/iPhone|iPad|iPod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),
+  inapp=/FBAN|FBAV|Instagram|Line\/|MicroMessenger|Snapchat|TikTok|musical_ly|GSA\/|Twitter|LinkedInApp/i.test(ua),
+  standalone=(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;
+ let closed=false;try{closed=localStorage.getItem('floxly:ins')==='1'}catch(_){}
+ if(standalone||closed)return;
+ const close=()=>{el.hidden=true;try{localStorage.setItem('floxly:ins','1')}catch(_){}};
+ const show=(t,m,btn)=>{el.innerHTML=`<b>${t}</b>${m}<div class="r"><button type="button" id="insx">Plus tard</button>${btn||''}</div>`;el.hidden=false;
+  el.querySelector('#insx').onclick=close;const g=el.querySelector('.go');if(g)g.onclick=async()=>{if(dp){dp.prompt();try{await dp.userChoice}catch(_){}dp=null}close()}};
+ addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;show('Installer Floxly','Ajoute l’application sur ton écran d’accueil : plein écran, sans barre d’adresse.','<button type="button" class="go">Installer</button>')});
+ addEventListener('appinstalled',()=>{el.hidden=true});
+ setTimeout(()=>{if(!el.hidden)return;
+  if(inapp)show('Ouvre dans ton navigateur','Ce lien est ouvert dans une application (réseau social, messagerie). Touche ⋯ ou « Ouvrir dans le navigateur », puis choisis <b style="display:inline">Safari</b> (iPhone) ou <b style="display:inline">Chrome</b> (Android) pour installer Floxly.');
+  else if(ios)show('Installer Floxly sur iPhone','Dans <b style="display:inline">Safari</b>, touche le bouton Partager (carré avec une flèche), puis <b style="display:inline">« Sur l’écran d’accueil »</b>, puis Ajouter.');
+  else show('Installer Floxly','Dans le menu ⋮ de ton navigateur, choisis <b style="display:inline">« Installer l’application »</b> ou « Ajouter à l’écran d’accueil ».')},2500);
+})();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+/* Si le composant Supabase n'a pas pu être chargé (réseau qui bloque le CDN) : message clair. */
+if(!window.supabase)document.addEventListener('DOMContentLoaded',function(){var d=document.createElement('div');d.style.cssText='position:fixed;inset:0;z-index:99998;background:#121214;color:#fff;padding:32px;font:16px/1.5 system-ui,sans-serif';d.innerHTML='<h2 style="margin:0 0 12px">Connexion impossible</h2><p>Floxly n’a pas pu charger un composant nécessaire. Vérifie ta connexion internet, puis recharge la page. Si ça continue, change de réseau (Wi-Fi / données mobiles).</p>';document.body.appendChild(d)});
+</script>
+
 <script>
 const P={home:'M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-8Z',search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14ZM20 20l-3.5-3.5',bell:'M6 9a6 6 0 1 1 12 0c0 5 2 6.5 2 6.5H4S6 14 6 9ZM10 19a2 2 0 0 0 4 0',play:'M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1ZM10 9l5 3-5 3V9Z',plus:'M12 5v14M5 12h14',send:'M21 4L3 11l7 3 3 7 8-17ZM10 14l11-10',user:'M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM4 20c1-4 4-6 8-6s7 2 8 6',heart:'M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z',comment:'M20 12a8 8 0 0 1-11.7 7L4 20l1.2-4A8 8 0 1 1 20 12Z',repost:'M17 3l3 3-3 3M4 11V9a3 3 0 0 1 3-3h13M7 21l-3-3 3-3M20 13v2a3 3 0 0 1-3 3H4',mark:'M7 4h10a1 1 0 0 1 1 1v15l-6-4-6 4V5a1 1 0 0 1 1-1Z',share:'M12 3v12M7 8l5-5 5 5M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5',dots:'M5 12h.01M12 12h.01M19 12h.01',back:'M15 5l-7 7 7 7',music:'M9 18V6l11-2v12M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM20 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z',flip:'M4 8h3l2-3h6l2 3h3v11H4V8ZM12 11a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z',bolt:'M13 3L5 14h6l-1 7 8-11h-6l1-7Z',timer:'M12 8v5l3 2M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16ZM9 2h6',spark:'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z',x:'M6 6l12 12M18 6L6 18',clip:'M20 11l-8 8a5 5 0 0 1-7-7l8-8a3.5 3.5 0 0 1 5 5l-8 8a2 2 0 0 1-3-3l7-7',users:'M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM2.5 20c.6-3.5 3.2-5 6.5-5s5.9 1.5 6.5 5M16 4.5a3.2 3.2 0 0 1 0 6.2M18 15c2 .5 3.200 2 3.500 5'};
 Object.assign(P,{lock:'M6 11V8a6 6 0 0 1 12 0v3M5 11h14v9H5v-9Z',shield:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3Z',chev:'M9 5l7 7-7 7',ok:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM8 12l3 3 5-6',out:'M10 4H5v16h5M15 8l4 4-4 4M19 12H9',chart:'M4 19V5M4 19h16M8 15l3-4 3 2 4-6'});
@@ -291,12 +355,12 @@ if(!CFG.url||!CFG.anonKey||/COLLE_/.test(CFG.url+CFG.anonKey))throw new Error('C
 const sb=window.supabase.createClient(CFG.url,CFG.anonKey,{auth:{persistSession:true,autoRefreshToken:true}});
 let UID=null,EMAIL='',CH=null;
 const ok=r=>{if(r.error)throw new Error(tr(r.error.message||String(r.error)));return r.data};
-const tr=m=>({'Invalid login credentials':'E-mail ou mot de passe incorrect','User already registered':'Cet e-mail est déjà utilisé','Email not confirmed':'Confirme ton e-mail avant de te connecter'}[m]||(/password/i.test(m)&&/least|short|weak/i.test(m)?'Mot de passe trop faible (8 caractères minimum)':m));
+const tr=m=>/posts_media_max/.test(m)?'10 photos maximum par publication':({'Invalid login credentials':'E-mail ou mot de passe incorrect','User already registered':'Cet e-mail est déjà utilisé','Email not confirmed':'Confirme ton e-mail avant de te connecter'}[m]||(/password/i.test(m)&&/least|short|weak/i.test(m)?'Mot de passe trop faible (8 caractères minimum)':m));
 const need=()=>{if(!UID)throw new Error('Connexion requise');return UID};
 const KIND_DB={Post:['Publication','Texte'],Projet:['Projet'],Short:['Short']},ALL_DB=['Publication','Texte','Projet','Short'];
 const kindUI=k=>k==='Projet'?'Projet':k==='Short'?'Short':'Post',kindDB=k=>k==='Post'?'Publication':k;
 const ms=t=>new Date(t).getTime();
-const mapMe=(p,email,pv)=>({id:p.id,name:p.display_name||p.handle,handle:p.handle,email:email||'',bio:p.bio||'',status:p.status||'',avatar:p.avatar_url||null,country:(pv&&pv.country)||'',ageRange:(pv&&pv.age_range)||'',created:ms(p.created_at)});
+const mapMe=(p,email,pv)=>({id:p.id,name:p.display_name||p.handle,handle:p.handle,email:email||'',bio:p.bio||'',status:p.status||'',avatar:p.avatar_url||null,cover:p.cover_url||null,country:(pv&&pv.country)||'',ageRange:(pv&&pv.age_range)||'',created:ms(p.created_at)});
 const b64ToU8=s=>{const p='='.repeat((4-s.length%4)%4),b=(s+p).replace(/-/g,'+').replace(/_/g,'/'),r=atob(b);return Uint8Array.from([...r].map(c=>c.charCodeAt(0)))};
 const AUTH_FK='posts_author_profile_fkey';
 const POST_SEL=`id,kind,title,body,image_url,media,tags,visibility,community_id,created_at,like_count,comment_count,repost_count,save_count,author:profiles!${AUTH_FK}(id,handle,display_name,avatar_url)`;
@@ -319,6 +383,10 @@ const saveSet=()=>{try{localStorage.setItem('floxly:set',JSON.stringify(SET))}ca
 async function fetchMe(){const {data:{session}}=await sb.auth.getSession();if(!session){UID=null;return null}UID=session.user.id;EMAIL=session.user.email||'';
  let p=null;for(let i=0;i<3&&!p;i++){const r=await sb.from('profiles').select('*').eq('id',UID).maybeSingle();p=r.data;if(!p)await new Promise(x=>setTimeout(x,400))}
  if(!p)throw new Error('Profil introuvable : vérifie la migration SQL');const pv=(await sb.from('profile_private').select('*').eq('user_id',UID).maybeSingle()).data||{};SET={...SET,...(pv.settings||{})};try{localStorage.setItem('floxly:set',JSON.stringify(SET))}catch(_){}return mapMe(p,EMAIL,pv)}
+/* Envoi vers le stockage avec progression réelle (même requête que supabase-js, via XMLHttpRequest). */
+async function xhrUpload(path,blob,onP){const {data:{session}}=await sb.auth.getSession();return new Promise((res,rej)=>{const x=new XMLHttpRequest(),fd=new FormData();fd.append('cacheControl','3600');fd.append('',blob);
+ x.open('POST',`${CFG.url}/storage/v1/object/media/${path}`);x.setRequestHeader('Authorization','Bearer '+(session?session.access_token:CFG.anonKey));x.setRequestHeader('apikey',CFG.anonKey);x.setRequestHeader('x-upsert','false');
+ x.upload.onprogress=e=>{if(e.lengthComputable&&onP)onP(e.loaded/e.total)};x.onload=()=>x.status>=200&&x.status<300?res():rej(new Error('Envoi du fichier impossible ('+x.status+')'));x.onerror=()=>rej(new Error('Connexion perdue pendant l’envoi'));x.send(fd)})}
 const A={
  auth:{
   me:fetchMe,out:()=>false,
@@ -329,14 +397,15 @@ const A={
   async signIn({email,pw}){const r=await sb.auth.signInWithPassword({email,password:pw});if(r.error)throw new Error(tr(r.error.message));return fetchMe()},
   async signOut(){await sb.auth.signOut();UID=null}},
  profiles:{
-  async update(p){need();const r=await sb.from('profiles').update({display_name:p.name,status:p.status,bio:p.bio,avatar_url:p.avatar,updated_at:new Date().toISOString()}).eq('id',UID).select('*').single();let pv={country:p.country||null,age_range:p.ageRange||null};if('country' in p||'ageRange' in p)ok(await sb.from('profile_private').upsert({user_id:UID,...pv,updated_at:new Date().toISOString()},{onConflict:'user_id'}));else pv=(await sb.from('profile_private').select('*').eq('user_id',UID).maybeSingle()).data||{};return mapMe(ok(r),EMAIL,pv)},
+  async update(p){need();const r=await sb.from('profiles').update({display_name:p.name,status:p.status,bio:p.bio,avatar_url:p.avatar,cover_url:p.cover,updated_at:new Date().toISOString()}).eq('id',UID).select('*').single();let pv={country:p.country||null,age_range:p.ageRange||null};if('country' in p||'ageRange' in p)ok(await sb.from('profile_private').upsert({user_id:UID,...pv,updated_at:new Date().toISOString()},{onConflict:'user_id'}));else pv=(await sb.from('profile_private').select('*').eq('user_id',UID).maybeSingle()).data||{};return mapMe(ok(r),EMAIL,pv)},
   async suggest(){return ok(await sb.rpc('suggest_profiles'))||[]},
   async search(q){return(ok(await sb.rpc('search_all',{p_q:q})).profiles)||[]},
+  link:h=>location.href.split('#')[0]+'#u-'+h,
   async byHandle(h){need();return ok(await sb.rpc('profile_id_by_handle',{p_handle:h}))},
   async follow(id,source){need();const r=await sb.from('follows').insert({follower_id:UID,followee_id:id,source:source||null});if(r.error&&r.error.code!=='23505')throw new Error(tr(r.error.message))},
   async unfollow(id){need();ok(await sb.from('follows').delete().eq('follower_id',UID).eq('followee_id',id))},
   async get(id){const [p,f,n]=await Promise.all([sb.from('profiles').select('*').eq('id',id).maybeSingle(),sb.from('follows').select('followee_id').eq('follower_id',UID).eq('followee_id',id),sb.from('posts').select('id',{count:'exact',head:true}).eq('author_id',id).in('kind',ALL_DB)]);
-   if(!p.data)return null;return{id:p.data.id,name:p.data.display_name||p.data.handle,handle:p.data.handle,bio:p.data.bio||'',status:p.data.status||'',avatar:p.data.avatar_url,followers:p.data.followers_count,following:p.data.following_count,posts:n.count||0,isFollowing:!!(f.data&&f.data.length)}},
+   if(!p.data)return null;return{id:p.data.id,name:p.data.display_name||p.data.handle,handle:p.data.handle,bio:p.data.bio||'',status:p.data.status||'',avatar:p.data.avatar_url,cover:p.data.cover_url||null,followers:p.data.followers_count,following:p.data.following_count,posts:n.count||0,isFollowing:!!(f.data&&f.data.length)}},
   async counts(){need();const [p,n]=await Promise.all([sb.from('profiles').select('followers_count,following_count').eq('id',UID).single(),sb.from('posts').select('id',{count:'exact',head:true}).eq('author_id',UID).in('kind',ALL_DB)]);return{posts:n.count||0,followers:p.data.followers_count,following:p.data.following_count}}},
  posts:{
   async list({kinds=['Post','Projet'],mine=false,community=null,author=null}={}){need();let q=sb.from('posts').select(POST_SEL).in('kind',kinds.flatMap(k=>KIND_DB[k]||[])).order('created_at',{ascending:false}).limit(50);
@@ -378,7 +447,7 @@ const A={
   async admin(id){const r=ok(await sb.rpc('community_admin',{p_id:id})),L={admin:'Admin',moderateur:'Modérateur',membre:'Membre',en_attente:'Demande en attente'};return{members:r.members.map(m=>({id:m.id,name:m.name,role:L[m.role]||m.role})),reports:r.reports}},
   invite:id=>location.href.split('#')[0]+'#c-'+id},
  notifications:{
-  async list(){need();const r=ok(await sb.from('notifications').select('id,type,text,read,created_at,actor:profiles!notifications_actor_id_fkey(display_name)').order('created_at',{ascending:false}).limit(50));return r.map(n=>({id:n.id,type:n.type,text:n.text,from:n.actor?n.actor.display_name:'Floxly',at:ms(n.created_at),read:n.read}))},
+  async list(){need();const r=ok(await sb.from('notifications').select('id,type,text,read,created_at,actor:profiles!notifications_actor_id_fkey(id,display_name)').order('created_at',{ascending:false}).limit(50));return r.map(n=>({id:n.id,type:n.type,text:n.text,from:n.actor?n.actor.display_name:'Floxly',fromId:n.actor?n.actor.id:null,at:ms(n.created_at),read:n.read}))},
   async markRead(){if(UID)await sb.from('notifications').update({read:true}).eq('user_id',UID).eq('read',false)}},
  async search(q){need();q=String(q).trim();if(!q)return{profiles:[],posts:[],communities:[]};const r=ok(await sb.rpc('search_all',{p_q:q}));
   const ps=r.post_ids.length?await sb.from('posts').select(POST_SEL).in('id',r.post_ids).order('created_at',{ascending:false}):{data:[]};
@@ -421,7 +490,7 @@ const A={
  calls:{async start(){return{ok:false,reason:'Service d’appel non connecté (WebRTC à brancher)'}}},
  media:{async upload(file,o={}){need();const mx=o.maxPx||1080,ty=file.type||'';let blob=file,ext=(ty.split('/')[1]||'bin').split(';')[0].replace('x-matroska','mkv').replace('quicktime','mov'),type=ty.startsWith('image/')?'image':ty.startsWith('video/')?'video':ty.startsWith('audio/')?'audio':'file';
   if(type==='image'&&ty!=='image/gif'){blob=await new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(file);im.onload=()=>{const r=Math.min(1,mx/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*r);c.height=Math.round(im.height*r);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);c.toBlob(b=>b?res(b):rej(new Error('Image illisible')),'image/jpeg',.82)};im.onerror=()=>rej(new Error('Image illisible'));im.src=u});ext='jpg'}
-  const path=`${UID}/${crypto.randomUUID()}.${ext}`,r=await sb.storage.from('media').upload(path,blob,{contentType:blob.type||ty||undefined,upsert:false});if(r.error)throw new Error('Envoi du fichier impossible : '+r.error.message);
+  const path=`${UID}/${crypto.randomUUID()}.${ext}`;await xhrUpload(path,blob,o.onProgress);
   return{type,url:sb.storage.from('media').getPublicUrl(path).data.publicUrl,persisted:true}}},
  async report(kind,rid,reason){need();ok(await sb.from('reports').insert({reporter_id:UID,target_type:kind,target_id:String(rid),reason:reason||''}))}
 };
@@ -429,7 +498,7 @@ return A})();
 
 
 /* =========================== INTERFACE =========================== */
-let ME=null,CUR='home',CC=null,MSL=[],RP=null,ED=null,CMODE='Post',CMEDIA=null,PD=7,MT='likes',PT=0,MF='all',NF='all',AM='up',CD=null,SHF=null,AU=null,REC=null,PKI=0,SHI=null,SVID=null;
+let ME=null,CUR='home',CC=null,MSL=[],RP=null,ED=null,CMODE='Post',CMEDIA=[],PD=7,MT='likes',PT=0,MF='all',NF='all',AM='up',CD=null,SHF=null,AU=null,REC=null,PKI=0,SHI=null,SVID=null;
 const root=document.documentElement,prv=m=>m.del?'Message supprimé':m.st?'Sticker':m.v!==undefined?'Message vocal':String(m.t||'').slice(0,60);
 const pal=[['Aurore','#7C5CFF','#22D3EE','#FF5FA2'],['Océan','#2563EB','#22D3EE','#8B5CF6'],['Braise','#FF6A3D','#FFB020','#FF3D7F'],['Menthe','#10B981','#22D3EE','#84CC16'],['Rubis','#E11D48','#FB7185','#7C3AED'],['Orchidée','#C026D3','#7C5CFF','#F472B6'],['Soleil','#F59E0B','#FDE047','#FB7185'],['Graphite','#64748B','#94A3B8','#38BDF8'],['Noir cassé','#3A3A44','#6A6A78','#A8A8B8'],['Pierre','#8A877F','#B3B0A8','#6B6A73']];
 function applyP(i){const p=pal[i]||pal[0];root.style.setProperty('--a',p[1]);root.style.setProperty('--b',p[2]);root.style.setProperty('--c',p[3]);$$('#sw button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.p===i))}
@@ -438,8 +507,8 @@ $('#sw').innerHTML=pal.map((p,i)=>`<button aria-pressed="false" data-p="${i}"><i
 $('#nav').innerHTML=[['home','Accueil','home'],['shorts','Shorts','play'],['create','Créer','plus'],['msgs','Messages','send'],['profile','Profil','user']].map((t,i)=>`<button class="tab ${i==2?'cr2':''}" data-go="${t[0]}" ${t[0]==='create'?'data-mode="Post"':''} aria-label="${t[1]}">${I(t[2])}</button>`).join('');
 ico();
 
-const noNav=['auth','create','chat','settings','call','sv','editp'],NAVK={pview:'',chat:'msgs',notifs:'',search:'',settings:'profile',editp:'profile',sub:'profile',sched:'profile',comm:'',cnew:'',cdet:'',call:'msgs',sv:'home'};
-function go(v){if(CUR==='shorts'&&v!=='shorts')flushWatch();CUR=v;$$('.v').forEach(e=>e.classList.toggle('on',e.id===v));document.body.classList.toggle('nonav',noNav.includes(v));const k=v in NAVK?NAVK[v]:v;$$('.tab').forEach(t=>k&&t.dataset.go===k&&t.dataset.go!=='create'?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(v!=='shorts')$$('#scs video').forEach(x=>x.pause());const r=RV[v];return r?r():null}
+const noNav=['auth','create','chat','settings','call','sv','editp','studio'],NAVK={studio:'',pview:'',chat:'msgs',notifs:'',search:'',settings:'profile',editp:'profile',sub:'profile',sched:'profile',comm:'',cnew:'',cdet:'',call:'msgs',sv:'home'};
+function go(v){document.body.classList.toggle('insok',v==='home'||v==='auth');if(CUR==='shorts'&&v!=='shorts')flushWatch();CUR=v;$$('.v').forEach(e=>e.classList.toggle('on',e.id===v));document.body.classList.toggle('nonav',noNav.includes(v));const k=v in NAVK?NAVK[v]:v;$$('.tab').forEach(t=>k&&t.dataset.go===k&&t.dataset.go!=='create'?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(v!=='shorts')$$('#scs video').forEach(x=>x.pause());const r=RV[v];return r?r():null}
 const refresh=()=>RV[CUR]?RV[CUR]():null;
 const av=(a,i=0)=>a&&a.avatar?`<div class="av" style="background:center/cover url(${a.avatar})"></div>`:`<div class="av ${gs[i%3]}">${esc((a?.name||'?')[0]).toUpperCase()}</div>`;
 
@@ -454,55 +523,129 @@ function modal(h){$('#mdl').innerHTML=h;$('#mdl').hidden=false;$('#gbk').hidden=
 $('#gsh').addEventListener('click',e=>{const em=e.target.closest('[data-e]'),it=e.target.closest('[data-si]');if(em){const f=SHT.onEm;closeAll();f&&f(em.dataset.e)}else if(it){const f=SHT.items[+it.dataset.si][2];closeAll();f()}});
 
 /* ---- publications ---- */
-const mediaHTML=p=>{const m=p.media&&p.media[0];if(!m)return'';const inner=m.url?(m.type==='video'?`<video src="${m.url}" controls playsinline preload="metadata"></video>`:`<img src="${m.url}" alt="" loading="lazy">`):'<em>Média indisponible dans cette session</em>';return`<div class="md ${m.url?'':ms[hz(p.id)%3]}">${inner}</div>`};
-const postHTML=p=>{const l=p.likes.includes(ME.id),r=p.reposts.includes(ME.id),s=p.saves.includes(ME.id);return`<article class="po" id="post-${p.id}"><div data-u="${p.author.id}" style="cursor:pointer">${av(p.author,hz(p.author.id))}</div><div class="bd"><div class="nm"><b data-u="${p.author.id}" style="cursor:pointer">${esc(p.author.name)}</b><span>@${esc(p.author.handle)} · ${ago(p.at)}</span><button class="ab" data-act="menu" data-id="${p.id}" aria-label="Plus d’options" style="margin-left:auto">${I('dots')}</button></div>${p.title?`<p><b>${esc(p.title)}</b></p>`:''}${p.text?`<p>${rich(p.text)}</p>`:''}${mediaHTML(p)}${p.tags.length?`<p style="color:var(--a);font-size:13px">${p.tags.map(t=>'#'+esc(t)).join(' ')}</p>`:''}<div class="ac"><button class="ab" data-act="cm" data-id="${p.id}" aria-label="Commenter">${I('comment')}${p.comments.length}</button><button class="ab rp" data-act="rp" data-id="${p.id}" aria-pressed="${r}" aria-label="Republier">${I('repost')}${p.reposts.length}</button><button class="ab" data-act="lk" data-id="${p.id}" aria-pressed="${l}" aria-label="J’aime">${I('heart')}${p.likes.length}</button><button class="ab" data-act="sa" data-id="${p.id}" aria-pressed="${s}" aria-label="Enregistrer">${I('mark')}</button><button class="ab" data-act="sh" data-id="${p.id}" aria-label="Partager">${I('share')}</button></div></div></article>`};
+const FILTERS={none:'',eclat:'saturate(1.45) contrast(1.08)',nb:'grayscale(1)',chaud:'sepia(.35) saturate(1.3)',froid:'hue-rotate(190deg) saturate(1.1)',vintage:'sepia(.6) contrast(.95)'},FNAME={none:'Normal',eclat:'Éclat',nb:'Noir et blanc',chaud:'Chaud',froid:'Froid',vintage:'Vintage'},MAXIMG=10;
+function applyFx(v,fx){if(!fx||v._fx)return;v._fx=1;v.style.filter=FILTERS[fx.filter]||'';const s=fx.trimStart||0,e=fx.trimEnd;v.playbackRate=fx.speed||1;if(s)v.addEventListener('loadedmetadata',()=>{v.currentTime=s},{once:true});v.addEventListener('timeupdate',()=>{if(e&&v.currentTime>=e)v.currentTime=s})}
+const mediaHTML=p=>{const m=p.media||[];if(!m.length)return'';
+ if(m[0].type==='video')return m[0].url?`<div class="md1"><video src="${m[0].url}" ${m[0].poster?`poster="${m[0].poster}"`:''} controls playsinline preload="metadata" style="filter:${FILTERS[(m[0].fx&&m[0].fx.filter)||'none']||'none'}"></video></div>`:`<div class="md ${ms[hz(p.id)%3]}"><em>Média indisponible dans cette session</em></div>`;
+ const im=m.filter(x=>x.type==='image');
+ return`<div class="car"><div class="crs">${im.map((x,i)=>`<div class="sld" data-lb="${p.id}" data-i="${i}">${x.url?`<img src="${x.url}" alt="Image ${i+1} sur ${im.length}" loading="lazy">`:`<div class="miss ${ms[hz(p.id+i)%3]}"><em>Média indisponible dans cette session</em></div>`}</div>`).join('')}</div>${im.length>1?`<span class="cnt">1/${im.length}</span>`:''}</div>`};
+const postHTML=p=>{const l=p.likes.includes(ME.id),r=p.reposts.includes(ME.id),s=p.saves.includes(ME.id),media=mediaHTML(p);
+ const body=`${p.title?`<p class="pt"><b>${esc(p.title)}</b></p>`:''}${p.text?`<p class="pt">${rich(p.text)}</p>`:''}${p.tags.length?`<p class="pt">${p.tags.map(t=>`<a class="mn" data-q="#${esc(t)}">#${esc(t)}</a>`).join(' ')}</p>`:''}`;
+ const act=`<div class="ac"><button class="ab" data-act="cm" data-id="${p.id}" aria-label="Commenter">${I('comment')}${p.comments.length}</button><button class="ab rp" data-act="rp" data-id="${p.id}" aria-pressed="${r}" aria-label="Republier">${I('repost')}${p.reposts.length}</button><button class="ab" data-act="lk" data-id="${p.id}" aria-pressed="${l}" aria-label="J’aime">${I('heart')}${p.likes.length}</button><button class="ab" data-act="sa" data-id="${p.id}" aria-pressed="${s}" aria-label="Enregistrer">${I('mark')}</button><button class="ab" data-act="sh" data-id="${p.id}" aria-label="Partager">${I('share')}</button></div>`;
+ return`<article class="po" id="post-${p.id}"><div class="ph"><div data-u="${p.author.id}">${av(p.author,hz(p.author.id))}</div><div class="nm"><b data-u="${p.author.id}">${esc(p.author.name)}</b><span>@${esc(p.author.handle)} · ${ago(p.at)}</span></div><button class="ab" data-act="menu" data-id="${p.id}" aria-label="Plus d’options">${I('dots')}</button></div>${media?media+act+body:body+act}</article>`};
 async function share(i){const u=API.posts.link(i);if(navigator.share){try{await navigator.share({url:u});return}catch(_){}}copy(u)}
 async function doAct(a,i){try{
  if(a==='lk')await API.posts.like(i);else if(a==='rp')await API.posts.toggle(i,'reposts');else if(a==='sa')await API.posts.toggle(i,'saves');
  else if(a==='cm')return openComments(i);else if(a==='sh')return share(i);
  else if(a==='menu'){const p=await API.posts.get(i);return sheet([['Copier le lien','share',()=>copy(API.posts.link(i))],...(p.author.id===ME.id?[['Supprimer','trash',async()=>{await API.posts.remove(i);toast('Publication supprimée');refresh()},1]]:[['Signaler','shield',async()=>{await API.report('post',i,'');toast('Signalement envoyé')},1]])])}
  refresh()}catch(x){toast(x.message)}}
-async function openComments(i){const cs=await API.posts.comments(i);modal(`<h3 style="margin-bottom:10px">Commentaires</h3>${cs.length?cs.map(c=>`<div class="rowx"><div class="av ${gs[hz(c.author.id)%3]}" style="width:34px;height:34px;border-radius:12px">${esc(c.author.name[0])}</div><div style="flex:1"><b>${esc(c.author.name)}</b> <small style="display:inline">${ago(c.at)}</small><div>${rich(c.text)}</div></div></div>`).join(''):emp('Aucun commentaire','Sois le premier à commenter.')}<form class="inp" id="cmf" data-p="${i}" style="padding:10px 0 0"><input name="t" placeholder="Ajouter un commentaire" autocomplete="off" required maxlength="500"><button class="snd" aria-label="Envoyer">${I('send')}</button></form>`)}
+async function openComments(i){const cs=await API.posts.comments(i);modal(`<h3 style="margin-bottom:10px">Commentaires</h3>${cs.length?cs.map(c=>`<div class="rowx"><div class="av ${gs[hz(c.author.id)%3]}" data-u="${c.author.id}" style="width:34px;height:34px;border-radius:12px">${esc(c.author.name[0])}</div><div style="flex:1"><b data-u="${c.author.id}">${esc(c.author.name)}</b> <small style="display:inline">${ago(c.at)}</small><div>${rich(c.text)}</div></div></div>`).join(''):emp('Aucun commentaire','Sois le premier à commenter.')}<form class="inp" id="cmf" data-p="${i}" style="padding:10px 0 0"><input name="t" placeholder="Ajouter un commentaire" autocomplete="off" required maxlength="500"><button class="snd" aria-label="Envoyer">${I('send')}</button></form>`)}
 document.addEventListener('submit',async e=>{if(e.target.id==='cmf'){e.preventDefault();const i=e.target.dataset.p,t=new FormData(e.target).get('t').trim();if(!t)return;try{await API.posts.comment(i,t);await openComments(i);refresh()}catch(x){toast(x.message)}}});
 
 /* ---- accueil ---- */
 async function rHome(){
  const [sts,ps,sh,fo,cs,nt]=await Promise.all([API.stories.list(),API.posts.list(),API.posts.list({kinds:['Short']}),API.profiles.suggest(),API.communities.suggest(),API.notifications.list()]);
- $('#stories').innerHTML=`<button class="st add" data-go="create" data-mode="Story"><div>${I('plus')}Ta story</div></button>`+sts.map(s=>{const m=s.media[0];return`<button class="st" data-sv="${s.id}"><div class="${m&&m.url?'':ms[hz(s.id)%3]}" style="${m&&m.url&&m.type==='image'?`background:center/cover url(${m.url})`:''}">${esc(s.author.name.split(' ')[0])}</div></button>`}).join('');
+ const sg=groupStories(sts);$('#stories').innerHTML=`<button class="st add" data-go="create" data-mode="Story"><div>${I('plus')}Ta story</div></button>`+sg.map((g,k)=>{const last=g.items[g.items.length-1],m=[...g.items].reverse().map(x=>x.media[0]).find(x=>x&&x.url&&x.type==='image');return`<button class="st ${g.unseen?'':'seen'}" data-sg="${k}" aria-label="Stories de ${esc(g.author.name)}"><div class="${m?'':ms[hz(last.id)%3]}" style="${m?`background:center/cover url(${m.url})`:''}">${g.author.id===ME.id?'Ma story':esc(g.author.name.split(' ')[0])}${g.items.length>1?`<span class="stn">${g.items.length}</span>`:''}</div></button>`}).join('');
  $('#shr').innerHTML=sh.length?sh.map(p=>{const m=p.media[0];return`<button class="sh ${m&&m.url?'':ms[hz(p.id)%3]}" data-sh="${p.id}">${m&&m.url?`<video src="${m.url}#t=0.1" muted playsinline preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>`:''}<span class="pl">${I('play')}</span><b>${esc(p.text.slice(0,40)||'Short')}</b><small>${I('heart')}${p.likes.length}</small></button>`}).join(''):emp('Aucun Short pour l’instant','Crée le premier.',['Créer un Short','data-go="create" data-mode="Short"']);
  const pp=ps.map(postHTML);
  $('#feed').innerHTML=ps.length?pp.slice(0,2).join(''):emp('Ton fil est vide','Publie ton premier post, ou suis des profils pour le remplir.',['Créer une publication','data-go="create" data-mode="Post"']);
  $('#feed2').innerHTML=pp.slice(2).join('');
- $('#fol').innerHTML=fo.length?fo.map((f,i)=>`<div class="fl">${av(f,i)}<b>${esc(f.name)}</b><span>${esc(f.bio||'')}</span><button class="fb" data-fol="${f.id}">Suivre</button></div>`).join(''):emp('Aucune suggestion','Les profils suggérés viendront du back-end.');
+ $('#fol').innerHTML=fo.length?fo.map((f,i)=>`<div class="fl"><div data-u="${f.id}">${av(f,i)}</div><b data-u="${f.id}">${esc(f.name)}</b><span>${esc(f.bio||'')}</span><button class="fb" data-fol="${f.id}">Suivre</button></div>`).join(''):emp('Aucune suggestion','Les profils suggérés viendront du back-end.');
  $('#csug').innerHTML=cs.length?cs.map(c=>`<div class="cs" data-c="${c.id}"><div class="mini ${ms[c.g]}"></div><b>${esc(c.name)}</b><span>${fm(c.members)} membres${c.priv?' · Privée':''}</span><button class="fb" data-join="${c.id}">Rejoindre</button></div>`).join(''):emp('Aucune suggestion','Crée une communauté ou rejoins-en une.',['Créer une communauté','data-go="cnew"']);
  $('#ndot').hidden=!nt.some(n=>!n.read);watchViews('#home');
 }
-async function openStory(i){const s=await API.stories.get(i);if(!s)return;SVID=i;const m=s.media[0];$('#sv').innerHTML=(m&&m.url?(m.type==='video'?`<video class="stx" src="${m.url}" autoplay playsinline loop></video>`:`<img class="stx" src="${m.url}" alt="">`):`<div class="stx ${ms[hz(i)%3]}"></div>`)+`<div class="shd">${av(s.author)}<div><b>${esc(s.author.name)}</b><br><small>${ago(s.at)}</small></div><button class="ib" data-go="home" aria-label="Fermer">${I('x')}</button></div>${s.text?`<p>${esc(s.text)}</p>`:''}${s.author.id===ME.id?`<button class="eb" id="svdel" style="position:absolute;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:2">Supprimer la story</button>`:''}`;go('sv')}
-document.addEventListener('click',async e=>{if(e.target.closest('#svdel')){await API.stories.remove(SVID);toast('Story supprimée');go('home')}});
+let SEENST=new Set();try{SEENST=new Set(JSON.parse(localStorage.getItem('floxly:seenst')||'[]'))}catch(_){}
+const saveSeen=()=>{try{localStorage.setItem('floxly:seenst',JSON.stringify([...SEENST].slice(-300)))}catch(_){}};
+/* Les stories d'une même personne sont regroupées : une seule bulle, lues les unes après les autres. */
+function groupStories(sts){const g={};sts.forEach(s=>(g[s.author.id]=g[s.author.id]||{author:s.author,items:[]}).items.push(s));const arr=Object.values(g);arr.forEach(x=>{x.items.sort((a,b)=>a.at-b.at);x.last=x.items[x.items.length-1].at;x.unseen=x.items.some(s=>!SEENST.has(s.id))});
+ arr.sort((a,b)=>(b.author.id===ME.id)-(a.author.id===ME.id)||(b.unseen-a.unseen)||b.last-a.last);return arr}
+let SG=[],SGI=0,SII=0,STM=null;
+async function openStories(gi){SG=groupStories(await API.stories.list());if(!SG[gi])return;SGI=gi;const f=SG[gi].items.findIndex(s=>!SEENST.has(s.id));SII=f<0?0:f;await go('sv');showSt()}
+function stEnd(){clearTimeout(STM);go('home')}
+function stNext(){const g=SG[SGI];if(!g)return stEnd();if(SII<g.items.length-1)SII++;else{SGI++;SII=0;if(SGI>=SG.length)return stEnd()}showSt()}
+function stPrev(){if(SII>0)SII--;else if(SGI>0){SGI--;SII=0}showSt()}
+function showSt(){clearTimeout(STM);const g=SG[SGI];if(!g)return stEnd();const s=g.items[SII];SEENST.add(s.id);saveSeen();const m=s.media[0],isV=!!(m&&m.url&&m.type==='video');
+ $('#sv').innerHTML=`<div class="spb">${g.items.map((x,i)=>`<i class="${i<SII?'d':i===SII?'a':''}"><b ${i===SII?`style="animation-duration:${isV?'3600s':'5s'}"`:''}></b></i>`).join('')}</div><div class="shd"><div data-u="${g.author.id}">${av(g.author)}</div><div data-u="${g.author.id}"><b>${esc(g.author.name)}</b><br><small>${ago(s.at)} · ${SII+1}/${g.items.length}</small></div><button class="ib" data-go="home" aria-label="Fermer">${I('x')}</button></div>${m&&m.url?(isV?`<video class="stx" src="${m.url}" autoplay playsinline></video>`:`<img class="stx" src="${m.url}" alt="">`):`<div class="stx ${ms[hz(s.id)%3]}"></div>`}${s.text?`<p>${rich(s.text)}</p>`:''}<button class="stap l" data-sn="-1" aria-label="Story précédente"></button><button class="stap r" data-sn="1" aria-label="Story suivante"></button>${s.author.id===ME.id?`<button class="eb" id="svdel" style="position:absolute;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:3">Supprimer cette story</button>`:''}`;
+ if(isV){const v=$('#sv video');v.onended=stNext;v.onerror=()=>{STM=setTimeout(stNext,2000)};v.onloadedmetadata=()=>{const b=$('#sv .spb i.a b');if(b)b.style.animationDuration=v.duration+'s'};applyFx(v,m.fx)}else STM=setTimeout(stNext,5000)}
+document.addEventListener('click',async e=>{const n=e.target.closest('[data-sn]');if(n)return+n.dataset.sn>0?stNext():stPrev();
+ if(e.target.closest('#svdel')){clearTimeout(STM);const id=SG[SGI].items[SII].id,aid=SG[SGI].author.id;await API.stories.remove(id);toast('Story supprimée');SG=groupStories(await API.stories.list());const gi=SG.findIndex(x=>x.author.id===aid);if(gi<0)return stEnd();SGI=gi;SII=Math.min(SII,SG[gi].items.length-1);showSt()}});
 
 /* ---- Shorts ---- */
 let IO=null;
 async function rShorts(){const sh=await API.posts.list({kinds:['Short']});if(IO)IO.disconnect();
- $('#scs').innerHTML=sh.length?sh.map(p=>{const m=p.media[0],l=p.likes.includes(ME.id);return`<div class="sp" data-id="${p.id}">${m&&m.url?`<video class="bgm" src="${m.url}" loop playsinline muted></video>`:`<div class="bgm ${ms[hz(p.id)%3]}"></div>`}<div class="sh2"></div><div class="rl"><button data-act="lk" data-id="${p.id}" aria-pressed="${l}"><span class="rb">${I('heart')}</span>${p.likes.length}</button><button data-act="cm" data-id="${p.id}"><span class="rb">${I('comment')}</span>${p.comments.length}</button><button data-act="sa" data-id="${p.id}"><span class="rb">${I('mark')}</span>Sauver</button><button data-act="sh" data-id="${p.id}"><span class="rb">${I('share')}</span>Partager</button></div><div class="cp2"><b>@${esc(p.author.handle)}</b><p>${esc(p.text)}</p></div></div>`}).join(''):`<div class="sp"><div class="bgm m1"></div><div class="sh2"></div><div style="position:relative;z-index:2;color:#fff">${emp('Aucun Short pour l’instant','Crée le premier Short de Floxly.',['Créer un Short','data-go="create" data-mode="Short"'])}</div></div>`;
+ $('#scs').innerHTML=sh.length?sh.map(p=>{const m=p.media[0],l=p.likes.includes(ME.id),fx=m&&m.fx;return`<div class="sp" data-id="${p.id}">${m&&m.url?`<video class="bgm" src="${m.url}" ${m.poster?`poster="${m.poster}"`:''} loop playsinline muted></video>`:`<div class="bgm ${ms[hz(p.id)%3]}"></div>`}<div class="sh2"></div>${fx&&fx.text?`<div class="fxt ${fx.pos||'bas'}">${esc(fx.text)}</div>`:''}<div class="rl"><button data-act="lk" data-id="${p.id}" aria-pressed="${l}"><span class="rb">${I('heart')}</span>${p.likes.length}</button><button data-act="cm" data-id="${p.id}"><span class="rb">${I('comment')}</span>${p.comments.length}</button><button data-act="sa" data-id="${p.id}"><span class="rb">${I('mark')}</span>Sauver</button><button data-act="sh" data-id="${p.id}"><span class="rb">${I('share')}</span>Partager</button></div><div class="cp2"><b data-u="${p.author.id}">@${esc(p.author.handle)}</b><p>${rich(p.text)}</p></div></div>`}).join(''):`<div class="sp"><div class="bgm m1"></div><div class="sh2"></div><div style="position:relative;z-index:2;color:#fff">${emp('Aucun Short pour l’instant','Crée le premier Short de Floxly.',['Créer un Short','data-go="create" data-mode="Short"'])}</div></div>`;
+ $$('#scs .sp').forEach((s,i)=>{const v=s.querySelector('video'),m=sh[i]&&sh[i].media[0];if(v&&m)applyFx(v,m.fx)});
  IO=new IntersectionObserver(es=>es.forEach(x=>{const v=x.target.querySelector('video'),i=x.target.dataset.id,on=x.isIntersecting&&x.intersectionRatio>.6;if(on){if(!ACT||ACT.id!==i){flushWatch();ACT={id:i,el:x.target,t0:Date.now()};if(!SEEN.has(i)){SEEN.add(i);API.posts.view(i).catch(()=>{})}}if(v)v.play().catch(()=>{})}else{if(v)v.pause();if(ACT&&ACT.el===x.target)flushWatch()}}),{root:$('#scs'),threshold:[.6]});$$('#scs .sp').forEach(s=>IO.observe(s));
  if(SHF){const t=$(`#scs .sp[data-id="${SHF}"]`);t&&t.scrollIntoView();SHF=null}}
-$('#scs').addEventListener('click',e=>{if(e.target.closest('.rl'))return;const v=e.target.closest('.sp')?.querySelector('video');if(v)v.muted=!v.muted});
+$('#scs').addEventListener('click',e=>{if(e.target.closest('.rl')||e.target.closest('[data-u]'))return;const v=e.target.closest('.sp')?.querySelector('video');if(v)v.muted=!v.muted});
+/* ---- envoi : barre de progression et courbe qui se remplit (Shorts) ---- */
+function pbar(f){const b=$('#pbar');if(f>=0&&f<1){b.hidden=false;b.style.width=Math.round(f*100)+'%';return}b.style.width=f>=1?'100%':'0';setTimeout(()=>{b.hidden=true;b.style.width='0'},450)}
+function upl(f,err){const o=$('#upl'),p=Math.max(0,Math.min(1,f));o.hidden=false;o.classList.toggle('err',!!err);$('#uplp').style.strokeDasharray=`${p*100} 100`;$('#uplt').textContent=err?'Échec de l’envoi':Math.round(p*100)+' %';$('#upls').textContent=err?err:(p>=1?'Publié !':'Publication en cours…');$('#uplr').hidden=!err;if(err)pbar(-1);else pbar(f)}
 
 /* ---- création ---- */
-function setMode(m){CMODE=m;$$('#modes button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.md===m));$('#ctl').hidden=m!=='Projet';$('#ctgl').hidden=m==='Story';$('#cvl').hidden=m==='Story';$('#cfile').accept=m==='Short'?'video/*':'image/*,video/*';drawPv()}
-function drawPv(){const m=CMEDIA;$('#pv').innerHTML=m?(m.type==='video'?`<video src="${m.url}" controls playsinline></video>`:`<img src="${m.url}" alt="">`)+`<button type="button" class="ib x" id="pvx" aria-label="Retirer le média">${I('x')}</button>`:`<button type="button" class="eb" id="cpick">${CMODE==='Short'?'Choisir une vidéo':'Choisir une photo ou une vidéo'}</button>`}
+let CFX={filter:'none',speed:1,vol:1,trimStart:0,trimEnd:null,text:'',pos:'bas',dur:0,coverT:0,coverBlob:null},STT='filtres',UP=false,LASTPUB=null;
+const defFx=()=>({filter:'none',speed:1,vol:1,trimStart:0,trimEnd:null,text:'',pos:'bas',dur:0,coverT:0,coverBlob:null});
+function setMode(m){if(m!==CMODE&&CMEDIA.length&&(m==='Short'||CMODE==='Short'))CMEDIA=[];CMODE=m;$$('#modes button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.md===m));$('#ctl').hidden=m!=='Projet';$('#ctgl').hidden=m==='Story';$('#cvl').hidden=m==='Story';$('#cfile').accept=m==='Short'?'video/*':'image/*,video/*';$('#cfile').multiple=(m==='Post'||m==='Projet');drawPv()}
+function drawPv(){const m=CMEDIA,box=$('#pv');
+ if(!m.length){box.innerHTML=`<button type="button" class="eb" id="cpick">${CMODE==='Short'?'Choisir une vidéo':CMODE==='Story'?'Choisir une photo ou une vidéo':`Choisir des photos (jusqu’à ${MAXIMG}) ou une vidéo`}</button>`;return}
+ if(m[0].type==='video'){box.innerHTML=`<video src="${m[0].url}" playsinline muted loop autoplay style="filter:${FILTERS[(m[0].fx||{}).filter]||'none'}"></video><button type="button" class="ib x" id="pvx" aria-label="Retirer la vidéo">${I('x')}</button>${CMODE==='Short'?`<button type="button" class="fb" id="stopen" style="position:absolute;bottom:10px;left:10px">Ouvrir le studio</button>`:''}`;return}
+ box.innerHTML=`<div class="pvg">${m.map((x,i)=>`<div><img src="${x.url}" alt="Photo ${i+1}"><button type="button" class="ib" data-rm="${i}" aria-label="Retirer la photo ${i+1}">${I('x')}</button></div>`).join('')}${CMODE!=='Story'&&m.length<MAXIMG?`<button type="button" class="eb" id="cpick">+ Ajouter (${m.length}/${MAXIMG})</button>`:''}</div>`}
 async function rCreate(){setMode(CMODE);const cs=await API.communities.list();$('#ccl').hidden=!cs.length;$('#ccs').innerHTML='<option value="">Aucune</option>'+cs.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('')}
-$('#modes').addEventListener('click',e=>{const b=e.target.closest('[data-md]');if(b){CMEDIA=null;setMode(b.dataset.md)}});
-$('#pv').addEventListener('click',e=>{if(e.target.closest('#cpick'))$('#cfile').click();if(e.target.closest('#pvx')){CMEDIA=null;drawPv()}});
-$('#cfile').addEventListener('change',async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{CMEDIA=await API.media.upload(f);drawPv();if(!CMEDIA.persisted)toast('Vidéo gardée pour cette session seulement (à envoyer au stockage serveur)')}catch(x){toast(x.message)}});
-function collect(draft){const t=$('#ctx2').value.trim(),ti=$('#ctt').value.trim(),tags=($('#ctg').value.match(/[\p{L}\p{N}_]+/gu)||[]).map(x=>x.toLowerCase());
- if(!draft){if(CMODE==='Projet'&&!ti)throw Error('Le titre est obligatoire pour un Projet');if(CMODE==='Short'&&!CMEDIA)throw Error('Ajoute une vidéo pour ton Short');if(!t&&!CMEDIA&&!ti)throw Error('Ajoute du texte ou un média')}
- return{kind:CMODE,title:CMODE==='Projet'?ti:'',text:t,media:CMEDIA?[{type:CMEDIA.type,url:CMEDIA.url}]:[],tags:CMODE==='Story'?[]:tags,vis:$('#cvs').value,community:$('#ccs').value||null}}
-function resetC(){CMEDIA=null;['#ctx2','#ctt','#ctg','#cat'].forEach(s=>$(s).value='');drawPv()}
-$('#cpub').addEventListener('click',async()=>{try{const p=collect(false),at=$('#cat').value?new Date($('#cat').value).getTime():0;
- if(at){if(at<=Date.now())throw Error('Choisis une date dans le futur');await API.sched.add(p,at);resetC();toast('Publication programmée');return go('sched')}
- p.kind==='Story'?await API.stories.create(p):await API.posts.create(p);resetC();toast('Publié');go(p.kind==='Short'?'shorts':'home')}catch(x){toast(x.message)}});
-$('#cdr').addEventListener('click',async()=>{try{const p=collect(true);if(!p.text&&!p.title&&!p.media.length)throw Error('Rien à enregistrer');await API.drafts.add(p);resetC();toast('Brouillon enregistré')}catch(x){toast(x.message)}});
+$('#modes').addEventListener('click',e=>{const b=e.target.closest('[data-md]');if(b){CMEDIA=[];setMode(b.dataset.md)}});
+$('#pv').addEventListener('click',e=>{if(e.target.closest('#cpick'))$('#cfile').click();if(e.target.closest('#pvx')){CMEDIA=[];CFX=defFx();drawPv()}if(e.target.closest('#stopen'))go('studio');const r=e.target.closest('[data-rm]');if(r){CMEDIA.splice(+r.dataset.rm,1);drawPv()}});
+const mk=(f,t)=>({type:t,file:f,url:URL.createObjectURL(f)});
+function addFiles(fs){for(const f of fs){const t=f.type.startsWith('video/')?'video':f.type.startsWith('image/')?'image':null;if(!t){toast('Format non pris en charge');continue}
+ if(CMODE==='Short'){if(t!=='video'){toast('Un Short est une vidéo');continue}CMEDIA=[mk(f,t)];CFX=defFx();drawPv();go('studio');return}
+ if(CMODE==='Story'){CMEDIA=[mk(f,t)];continue}
+ if(t==='video'){if(CMEDIA.length){toast('Une vidéo ne se mélange pas avec des photos');continue}CMEDIA=[mk(f,t)];break}
+ if(CMEDIA.some(x=>x.type==='video')){toast('Retire la vidéo pour ajouter des photos');continue}
+ if(CMEDIA.length>=MAXIMG){toast(`${MAXIMG} photos maximum par publication`);break}CMEDIA.push(mk(f,t))}drawPv()}
+$('#cfile').addEventListener('change',e=>{const fs=[...e.target.files];e.target.value='';addFiles(fs)});
+function basePayload(draft){const t=$('#ctx2').value.trim(),ti=$('#ctt').value.trim(),tags=($('#ctg').value.match(/[\p{L}\p{N}_]+/gu)||[]).map(x=>x.toLowerCase());
+ if(!draft){if(CMODE==='Projet'&&!ti)throw Error('Le titre est obligatoire pour un Projet');if(CMODE==='Short'&&!CMEDIA.length)throw Error('Ajoute une vidéo pour ton Short');if(!t&&!CMEDIA.length&&!ti)throw Error('Ajoute du texte ou un média')}
+ return{kind:CMODE,title:CMODE==='Projet'?ti:'',text:t,tags:CMODE==='Story'?[]:tags,vis:$('#cvs').value,community:$('#ccs').value||null}}
+function resetC(){CMEDIA=[];CFX=defFx();['#ctx2','#ctt','#ctg','#cat'].forEach(s=>$(s).value='');drawPv()}
+async function uploadAll(items,onP){const out=[];for(let i=0;i<items.length;i++){const it=items[i],r=await API.media.upload(it.file,{onProgress:f=>onP((i+f*.95)/items.length)}),o={type:r.type,url:r.url};if(it.fx)o.fx=it.fx;if(it.posterBlob){const p=await API.media.upload(it.posterBlob,{maxPx:720});o.poster=p.url}out.push(o)}onP(1);return out}
+async function publish(f,at){const short=f.kind==='Short';LASTPUB={f,at};UP=true;if(short){go('shorts');upl(0)}else pbar(0);
+ try{const media=await uploadAll(CMEDIA,short?upl:pbar),p={...f,media};
+  if(at)await API.sched.add(p,at);else if(p.kind==='Story')await API.stories.create(p);else await API.posts.create(p);
+  resetC();LASTPUB=null;
+  if(short){upl(1);setTimeout(()=>{$('#upl').hidden=true},900);if(at){toast('Publication programmée');go('sched')}else await rShorts()}
+  else{pbar(1);toast(at?'Publication programmée':'Publié');go(at?'sched':'home')}}
+ catch(x){if(short)upl(0,x.message);else{pbar(-1);toast(x.message)}}finally{UP=false}}
+$('#cpub').addEventListener('click',async()=>{if(UP)return;try{const f=basePayload(false),at=$('#cat').value?new Date($('#cat').value).getTime():0;if(at&&at<=Date.now())throw Error('Choisis une date dans le futur');await publish(f,at)}catch(x){toast(x.message)}});
+$('#uplr').addEventListener('click',()=>{if(LASTPUB&&!UP)publish(LASTPUB.f,LASTPUB.at)});
+$('#cdr').addEventListener('click',async()=>{if(UP)return;try{const f=basePayload(true);if(!f.text&&!f.title&&!CMEDIA.length)throw Error('Rien à enregistrer');UP=true;pbar(0);const media=await uploadAll(CMEDIA,pbar);await API.drafts.add({...f,media});resetC();pbar(1);toast('Brouillon enregistré')}catch(x){pbar(-1);toast(x.message)}finally{UP=false}});
+/* ---- mini studio (réglages d’un Short avant publication) ---- */
+function paintSt(){const v=$('#stvid'),t=$('#stt');v.style.filter=FILTERS[CFX.filter]||'';v.playbackRate=CFX.speed;v.volume=CFX.vol;t.textContent=CFX.text;t.className='stt '+CFX.pos}
+function stPanel(){const p=$('#stp');$$('#stl button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tool===STT));const d=CFX.dur||0;
+ p.innerHTML=STT==='filtres'?`<div class="ch">${Object.keys(FILTERS).map(k=>`<button type="button" class="cp" data-flt="${k}" aria-pressed="${CFX.filter===k}">${FNAME[k]}</button>`).join('')}</div>`
+ :STT==='vitesse'?`<div class="ch">${[.5,1,1.5,2].map(s=>`<button type="button" class="cp" data-spd="${s}" aria-pressed="${CFX.speed===s}">${String(s).replace('.',',')}×</button>`).join('')}</div>`
+ :STT==='couper'?`<label class="fld">Début : <span id="trs">${CFX.trimStart.toFixed(1)}</span> s<input type="range" id="trsI" min="0" max="${d}" step="0.1" value="${CFX.trimStart}"></label><label class="fld">Fin : <span id="tre">${(CFX.trimEnd==null?d:CFX.trimEnd).toFixed(1)}</span> s<input type="range" id="treI" min="0" max="${d}" step="0.1" value="${CFX.trimEnd==null?d:CFX.trimEnd}"></label>`
+ :STT==='texte'?`<label class="fld">Texte sur la vidéo<input id="txI" maxlength="60" value="${esc(CFX.text)}" placeholder="Écris quelque chose"></label><div class="sg">${[['haut','Haut'],['milieu','Milieu'],['bas','Bas']].map(([k,n])=>`<button type="button" data-pos="${k}" aria-pressed="${CFX.pos===k}">${n}</button>`).join('')}</div>`
+ :STT==='volume'?`<label class="fld">Volume : <span id="vlt">${Math.round(CFX.vol*100)}</span> %<input type="range" id="vlI" min="0" max="1" step="0.05" value="${CFX.vol}"></label>`
+ :`<label class="fld">Image de couverture (position dans la vidéo)<input type="range" id="cvI" min="0" max="${d}" step="0.1" value="${CFX.coverT}"></label><p style="font-size:12px;color:var(--mu)">${CFX.coverBlob?'Couverture choisie.':'Sans choix, la première image sera utilisée.'}</p>`}
+async function rStudio(){const m=CMEDIA[0];if(!m||m.type!=='video')return go('create');const v=$('#stvid');if(v.getAttribute('data-src')!==m.url){v.setAttribute('data-src',m.url);v.src=m.url}
+ v.onloadedmetadata=()=>{CFX.dur=v.duration||0;if(CFX.trimEnd==null||CFX.trimEnd>CFX.dur)CFX.trimEnd=CFX.dur;stPanel()};v.ontimeupdate=()=>{if(CFX.trimEnd&&v.currentTime>=CFX.trimEnd||v.currentTime<CFX.trimStart-.05)v.currentTime=CFX.trimStart};
+ paintSt();stPanel();v.play().catch(()=>{v.muted=true;v.play().catch(()=>{})})}
+$('#studio').addEventListener('click',e=>{const g=s=>e.target.closest(s);let x;
+ if(x=g('[data-tool]')){STT=x.dataset.tool;return stPanel()}
+ if(x=g('[data-flt]')){CFX.filter=x.dataset.flt;paintSt();return stPanel()}
+ if(x=g('[data-spd]')){CFX.speed=+x.dataset.spd;paintSt();return stPanel()}
+ if(x=g('[data-pos]')){CFX.pos=x.dataset.pos;paintSt();return stPanel()}
+ if(g('#stx')){$('#stvid').pause();return go('create')}
+ if(g('#stok')){const v=$('#stvid');v.pause();const e2=CFX.trimEnd!=null&&CFX.dur&&CFX.trimEnd<CFX.dur-.05?CFX.trimEnd:null;CMEDIA[0].fx={filter:CFX.filter,speed:CFX.speed,vol:CFX.vol,trimStart:CFX.trimStart,trimEnd:e2,text:CFX.text,pos:CFX.pos};CMEDIA[0].posterBlob=CFX.coverBlob;drawPv();go('create')}});
+$('#studio').addEventListener('input',e=>{const v=$('#stvid'),i=e.target.id;
+ if(i==='trsI'){CFX.trimStart=Math.min(+e.target.value,(CFX.trimEnd==null?CFX.dur:CFX.trimEnd)-.3);$('#trs').textContent=CFX.trimStart.toFixed(1);v.currentTime=CFX.trimStart}
+ else if(i==='treI'){CFX.trimEnd=Math.max(+e.target.value,CFX.trimStart+.3);$('#tre').textContent=CFX.trimEnd.toFixed(1)}
+ else if(i==='txI'){CFX.text=e.target.value;paintSt()}
+ else if(i==='vlI'){CFX.vol=+e.target.value;$('#vlt').textContent=Math.round(CFX.vol*100);paintSt()}
+ else if(i==='cvI'){CFX.coverT=+e.target.value;v.pause();v.currentTime=CFX.coverT}});
+$('#studio').addEventListener('change',e=>{if(e.target.id!=='cvI')return;const v=$('#stvid'),grab=()=>{const c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;if(!c.width)return;c.getContext('2d').drawImage(v,0,0);c.toBlob(b=>{CFX.coverBlob=b;stPanel();toast('Couverture choisie')},'image/jpeg',.85)};v.addEventListener('seeked',grab,{once:true});v.currentTime=CFX.coverT||0});
+/* ---- visionneuse de photos (plein écran, défilement) ---- */
+async function openLb(pid,i){const p=await API.posts.get(pid),im=((p&&p.media)||[]).filter(x=>x.type==='image'&&x.url);if(!im.length)return;$('#lb').innerHTML=`<div class="lbh"><span id="lbc">${i+1}/${im.length}</span><button class="ib" id="lbx" aria-label="Fermer">${I('x')}</button></div><div class="lbs">${im.map((x,k)=>`<div class="lbi"><img src="${x.url}" alt="Image ${k+1} sur ${im.length}"></div>`).join('')}</div>`;$('#lb').hidden=false;const s=$('#lb .lbs');s.scrollLeft=i*s.clientWidth}
+document.addEventListener('scroll',e=>{const c=e.target;if(!c||!c.classList)return;if(c.classList.contains('crs')){const n=c.parentNode.querySelector('.cnt');if(n)n.textContent=(Math.round(c.scrollLeft/c.clientWidth)+1)+'/'+c.children.length}else if(c.classList.contains('lbs')){const n=$('#lbc');if(n)n.textContent=(Math.round(c.scrollLeft/c.clientWidth)+1)+'/'+c.children.length}},true);
+document.addEventListener('click',e=>{if(e.target.closest('#lbx'))$('#lb').hidden=true});
 
 /* ---- messages ---- */
 async function rMsgs(){const q=($('#msq').value||'').toLowerCase(),cs=(await API.messages.conversations()).filter(c=>c.title.toLowerCase().includes(q)&&(MF==='all'||(MF==='unread'&&c.unread>0)||(MF==='group'&&c.group)));
@@ -512,7 +655,7 @@ $('#mf').addEventListener('click',e=>{const b=e.target.closest('[data-mf]');if(b
 $('#nmsg').addEventListener('click',()=>modal(`<h3 style="margin-bottom:10px">Nouveau message</h3><div class="srch"><input id="nms" placeholder="Rechercher un profil" aria-label="Rechercher un profil"></div><div id="nmr">${emp('Recherche un profil','Les résultats viendront du back-end (API.profiles.search). En attendant, utilise « Mes notes ».')}</div>`));
 document.addEventListener('input',async e=>{if(e.target.id==='nms'){const r=await API.profiles.search(e.target.value);$('#nmr').innerHTML=r.length?r.map((p,i)=>`<button class="ci" data-pm="${p.id}"><div class="av ${gs[i%3]}">${esc(p.name[0])}</div><div class="tx"><b>${esc(p.name)}</b><p>@${esc(p.handle)}</p></div></button>`).join(''):emp('Aucun profil trouvé','Réessaie avec un autre nom.')}});
 async function openChat(i){CC=i;RP=ED=null;await API.messages.markRead(i);go('chat')}
-async function rChat(){const c=(await API.messages.conversations()).find(x=>x.id===CC);$('#cht').textContent=c?c.title:'';$('#cha').textContent=c?c.title[0]:'';$('#chs').textContent=c&&c.self?'Notes enregistrées pour toi':'';MSL=await API.messages.list(CC);showCtx();rstk();rm()}
+async function rChat(){const c=(await API.messages.conversations()).find(x=>x.id===CC);$('#cht').textContent=c?c.title:'';$('#cha').textContent=c?c.title[0]:'';const pu=(c&&c.peer)||'';$('#cha').dataset.u=pu;$('#cht').dataset.u=pu;$('#chs').textContent=c&&c.self?'Notes enregistrées pour toi':'';MSL=await API.messages.list(CC);showCtx();rstk();rm()}
 const rw=s=>Array.from({length:28},(_,i)=>Math.round(20+Math.abs(Math.sin(i*.9+s))*60*(.5+.5*Math.abs(Math.sin(i*.37+s*2)))));
 const wvb=w=>w.map((h,i)=>`<span style="--i:${i};--h:${h}%"></span>`).join('');
 function rm(){$('#ml').innerHTML=MSL.length?MSL.map(m=>{const r=m.re?MSL.find(x=>x.id===m.re):null;let c;
@@ -549,7 +692,7 @@ $('#cph').addEventListener('click',()=>openCall(false));$('#cvd').addEventListen
 
 /* ---- profil ---- */
 async function rProfile(){const [c,mine]=await Promise.all([API.profiles.counts(),API.posts.list({kinds:['Post','Projet','Short'],mine:true})]);
- $('#profile').innerHTML=`<div class="bar"><h1>@${esc(ME.handle)}</h1><button class="ib" data-go="settings" aria-label="Paramètres">${I('dots')}</button></div><div class="cov"></div><div class="pr">${ME.avatar?`<div class="av pa" style="background:center/cover url(${ME.avatar})"></div>`:`<div class="av g1 pa">${esc(ME.name[0]).toUpperCase()}</div>`}<button class="eb" data-go="editp">Modifier le profil</button></div>
+ $('#profile').innerHTML=`<div class="bar"><h1>@${esc(ME.handle)}</h1><button class="ib" data-go="settings" aria-label="Paramètres">${I('dots')}</button></div><div class="cov" style="${ME.cover?`background:center/cover url(${ME.cover})`:''}"></div><div class="pr">${ME.avatar?`<div class="av pa" style="background:center/cover url(${ME.avatar})"></div>`:`<div class="av g1 pa">${esc(ME.name[0]).toUpperCase()}</div>`}<div style="display:flex;gap:8px"><button class="eb" data-go="editp">Modifier le profil</button><button class="eb" data-share="${esc(ME.handle)}" aria-label="Partager mon profil">${I('share')}</button></div></div>
  <div style="padding:10px 4px 0"><b style="font-size:19px">${esc(ME.name)}</b><br><span style="color:var(--mu)">@${esc(ME.handle)}</span>${ME.status?`<br><span class="sl">${esc(ME.status)}</span>`:''}<p style="margin-top:10px;${ME.bio?'':'color:var(--mu)'}">${ME.bio?rich(ME.bio):'Ajoute une bio dans « Modifier le profil ».'}</p>
  <div class="sts"><div><b>${fm(c.posts)}</b><span>Publications</span></div><div><b>${fm(c.followers)}</b><span>Abonnés</span></div><div><b>${fm(c.following)}</b><span>Abonnements</span></div></div></div>
  <div class="tb" id="ptb">${['Publications','Shorts','Projets','Statistiques'].map((t,i)=>`<button data-pt="${i}" aria-pressed="${i===PT}">${t}</button>`).join('')}</div><div id="pbody"></div>`;
@@ -579,25 +722,27 @@ async function rStats(){const d=await API.stats(PD,Intl.DateTimeFormat().resolve
  <button class="fb" id="sexp" style="width:100%;padding:14px">Exporter les statistiques</button>`}
 document.addEventListener('click',e=>{const a=e.target.closest('[data-pd]'),b=e.target.closest('[data-mt]');if(a){PD=+a.dataset.pd;rProfile()}else if(b){MT=b.dataset.mt;rProfile()}else if(e.target.closest('#sexp')){const d={periode:PD+' jours',genere:new Date().toISOString()};API.stats(PD).then(s=>{Object.assign(d,s);const u=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:'application/json'}));const l=document.createElement('a');l.href=u;l.download='floxly-statistiques.json';l.click();setTimeout(()=>URL.revokeObjectURL(u),2000)})}});
 document.addEventListener('submit',async e=>{if(e.target.id==='gf'){e.preventDefault();const n=+new FormData(e.target).get('g');if(n>0){await API.setGoal(n);rProfile()}}});
-function rEditP(){$('#editp').innerHTML=`<div class="bar"><button class="ib" data-go="profile" aria-label="Retour">${I('back')}</button><h1>Modifier le profil</h1></div><form id="epf"><div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">${ME.avatar?`<div class="av pa" id="epa" style="background:center/cover url(${ME.avatar})"></div>`:`<div class="av g1 pa" id="epa">${esc(ME.name[0]).toUpperCase()}</div>`}<button type="button" class="eb" id="epb">Changer la photo</button><input type="file" id="epfile" accept="image/*" hidden></div><label class="fld">Nom affiché<input name="name" value="${esc(ME.name)}" maxlength="40" required></label><label class="fld">Statut (slogan)<input name="status" value="${esc(ME.status)}" maxlength="60"></label><label class="fld">Bio<textarea name="bio" maxlength="240">${esc(ME.bio)}</textarea></label><label class="fld">Pays (facultatif)<input name="country" value="${esc(ME.country||'')}" maxlength="40"></label><label class="fld">Tranche d’âge (facultatif)<select name="age"><option value="">Non précisé</option>${['18-24','25-34','35-44','45+'].map(x=>`<option ${ME.ageRange===x?'selected':''}>${x}</option>`).join('')}</select></label><p style="font-size:12px;color:var(--mu);margin:-4px 0 12px">Ces informations restent privées. Elles servent seulement aux pourcentages d’audience de tes statistiques.</p><button class="fb" style="width:100%;padding:14px;font-size:14px">Enregistrer</button></form>`;window._av=ME.avatar}
-document.addEventListener('click',e=>{if(e.target.closest('#epb'))$('#epfile').click()});
+function rEditP(){$('#editp').innerHTML=`<div class="bar"><button class="ib" data-go="profile" aria-label="Retour">${I('back')}</button><h1>Modifier le profil</h1></div><form id="epf"><div class="cov" id="epc" style="${ME.cover?`background:center/cover url(${ME.cover})`:''};margin-bottom:12px"></div><button type="button" class="eb" id="epcb" style="margin-bottom:14px">Changer la photo de couverture</button><input type="file" id="epcf" accept="image/*" hidden><div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">${ME.avatar?`<div class="av pa" id="epa" style="background:center/cover url(${ME.avatar})"></div>`:`<div class="av g1 pa" id="epa">${esc(ME.name[0]).toUpperCase()}</div>`}<button type="button" class="eb" id="epb">Changer la photo</button><input type="file" id="epfile" accept="image/*" hidden></div><label class="fld">Nom affiché<input name="name" value="${esc(ME.name)}" maxlength="40" required></label><label class="fld">Statut (slogan)<input name="status" value="${esc(ME.status)}" maxlength="60"></label><label class="fld">Bio<textarea name="bio" maxlength="240">${esc(ME.bio)}</textarea></label><label class="fld">Pays (facultatif)<input name="country" value="${esc(ME.country||'')}" maxlength="40"></label><label class="fld">Tranche d’âge (facultatif)<select name="age"><option value="">Non précisé</option>${['18-24','25-34','35-44','45+'].map(x=>`<option ${ME.ageRange===x?'selected':''}>${x}</option>`).join('')}</select></label><p style="font-size:12px;color:var(--mu);margin:-4px 0 12px">Ces informations restent privées. Elles servent seulement aux pourcentages d’audience de tes statistiques.</p><button class="fb" style="width:100%;padding:14px;font-size:14px">Enregistrer</button></form>`;window._av=ME.avatar;window._cv=ME.cover||null}
+document.addEventListener('click',e=>{if(e.target.closest('#epb'))$('#epfile').click();if(e.target.closest('#epcb'))$('#epcf').click()});
+document.addEventListener('change',async e=>{if(e.target.id==='epcf'){const f=e.target.files[0];if(!f)return;try{const u=await API.media.upload(f,{maxPx:1280});window._cv=u.url;$('#epc').style.background=`center/cover url(${u.url})`}catch(x){toast(x.message)}}});
 document.addEventListener('change',async e=>{if(e.target.id==='epfile'){const f=e.target.files[0];if(!f)return;try{const u=await API.media.upload(f,{maxPx:256});window._av=u.url;$('#epa').style.background=`center/cover url(${u.url})`;$('#epa').textContent=''}catch(x){toast(x.message)}}});
-document.addEventListener('submit',async e=>{if(e.target.id==='epf'){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));try{ME=await API.profiles.update({name:f.name.trim(),status:f.status.trim(),bio:f.bio.trim(),avatar:window._av||null,country:(f.country||'').trim(),ageRange:f.age||''});toast('Profil enregistré');go('profile')}catch(x){toast(x.message)}}});
+document.addEventListener('submit',async e=>{if(e.target.id==='epf'){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));try{ME=await API.profiles.update({name:f.name.trim(),status:f.status.trim(),bio:f.bio.trim(),avatar:window._av||null,cover:window._cv||null,country:(f.country||'').trim(),ageRange:f.age||''});toast('Profil enregistré');go('profile')}catch(x){toast(x.message)}}});
 
 const srcFor=()=>({home:'suggestions',pview:'profil',cdet:'communautes',comm:'communautes',search:'recherche',shorts:'shorts'}[CUR]||'fil');
 /* ---- profil d’un autre utilisateur ---- */
 let PV=null;
 async function openU(i){if(ME&&i===ME.id)return go('profile');PV=i;await go('pview')}
 async function rPview(){const u=await API.profiles.get(PV);if(!u){toast('Profil introuvable');return go('home')}const ps=await API.posts.list({kinds:['Post','Projet','Short'],author:u.id});
- $('#pview').innerHTML=`<div class="bar"><button class="ib" data-go="home" aria-label="Retour">${I('back')}</button><h1>@${esc(u.handle)}</h1></div><div class="cov"></div><div class="pr">${u.avatar?`<div class="av pa" style="background:center/cover url(${u.avatar})"></div>`:`<div class="av g1 pa">${esc(u.name[0]).toUpperCase()}</div>`}<div style="display:flex;gap:8px"><button class="eb" data-msgu="${u.id}">Message</button><button class="fb ${u.isFollowing?'on':''}" data-tf="${u.id}">${u.isFollowing?'Suivi':'Suivre'}</button></div></div><div style="padding:10px 4px 0"><b style="font-size:19px">${esc(u.name)}</b><br><span style="color:var(--mu)">@${esc(u.handle)}</span>${u.status?`<br><span class="sl">${esc(u.status)}</span>`:''}${u.bio?`<p style="margin-top:10px">${rich(u.bio)}</p>`:''}<div class="sts"><div><b>${fm(u.posts)}</b><span>Publications</span></div><div><b>${fm(u.followers)}</b><span>Abonnés</span></div><div><b>${fm(u.following)}</b><span>Abonnements</span></div></div></div><div class="h2">Publications</div>${ps.length?ps.map(postHTML).join(''):emp('Aucune publication','Ce profil n’a encore rien publié.')}`;watchViews('#pview')}
+ $('#pview').innerHTML=`<div class="bar"><button class="ib" data-go="home" aria-label="Retour">${I('back')}</button><h1>@${esc(u.handle)}</h1></div><div class="cov" style="${u.cover?`background:center/cover url(${u.cover})`:''}"></div><div class="pr">${u.avatar?`<div class="av pa" style="background:center/cover url(${u.avatar})"></div>`:`<div class="av g1 pa">${esc(u.name[0]).toUpperCase()}</div>`}<div style="display:flex;gap:8px"><button class="eb" data-share="${esc(u.handle)}" aria-label="Partager ce profil">${I('share')}</button><button class="eb" data-msgu="${u.id}">Message</button><button class="fb ${u.isFollowing?'on':''}" data-tf="${u.id}">${u.isFollowing?'Suivi':'Suivre'}</button></div></div><div style="padding:10px 4px 0"><b style="font-size:19px">${esc(u.name)}</b><br><span style="color:var(--mu)">@${esc(u.handle)}</span>${u.status?`<br><span class="sl">${esc(u.status)}</span>`:''}${u.bio?`<p style="margin-top:10px">${rich(u.bio)}</p>`:''}<div class="sts"><div><b>${fm(u.posts)}</b><span>Publications</span></div><div><b>${fm(u.followers)}</b><span>Abonnés</span></div><div><b>${fm(u.following)}</b><span>Abonnements</span></div></div></div><div class="h2">Publications</div>${ps.length?ps.map(postHTML).join(''):emp('Aucune publication','Ce profil n’a encore rien publié.')}`;watchViews('#pview')}
 document.addEventListener('click',async e=>{const t=e.target.closest('[data-tf]'),m=e.target.closest('[data-msgu]');try{if(t){t.classList.contains('on')?await API.profiles.unfollow(t.dataset.tf):await API.profiles.follow(t.dataset.tf,'profil');rPview()}else if(m){const c=await API.messages.start(m.dataset.msgu);closeAll();openChat(c)}}catch(x){toast(x.message)}});
+document.addEventListener('click',async e=>{const s=e.target.closest('[data-share]');if(!s)return;const u=API.profiles.link(s.dataset.share);if(navigator.share){try{await navigator.share({title:'Floxly',url:u});return}catch(_){}}copy(u)});
 /* ---- notifications ---- */
-async function rNotifs(){const l=(await API.notifications.list()).filter(n=>NF==='all'||n.type===NF);$('#nl').innerHTML=l.length?l.map((n,i)=>`<div class="nt">${av({name:n.from||'F'},i)}<p>${esc(n.text)} <span>${ago(n.at)}</span></p></div>`).join(''):emp('Aucune notification','Tes mentions, abonnés et activités apparaîtront ici.');await API.notifications.markRead();$('#ndot').hidden=true}
+async function rNotifs(){const l=(await API.notifications.list()).filter(n=>NF==='all'||n.type===NF);$('#nl').innerHTML=l.length?l.map((n,i)=>`<div class="nt"><div ${n.fromId?`data-u="${n.fromId}"`:''}>${av({name:n.from||'F'},i)}</div><p>${esc(n.text)} <span>${ago(n.at)}</span></p></div>`).join(''):emp('Aucune notification','Tes mentions, abonnés et activités apparaîtront ici.');await API.notifications.markRead();$('#ndot').hidden=true}
 $('#nfc').addEventListener('click',e=>{const b=e.target.closest('[data-nf]');if(b){NF=b.dataset.nf;rNotifs()}});
 
 /* ---- recherche ---- */
 async function rSearch(){$('#sq').value='';const t=await API.trends();$('#sr').innerHTML=`<div class="h2">Tendances</div>${t.length?`<div class="ch" style="flex-wrap:wrap">${t.map(x=>`<button class="cp" data-q="#${esc(x)}">#${esc(x)}</button>`).join('')}</div>`:emp('Aucune tendance','Les tags des publications apparaîtront ici.')}`}
-let sqt;$('#sq').addEventListener('input',()=>{clearTimeout(sqt);sqt=setTimeout(async()=>{const q=$('#sq').value.trim().replace(/^#/,'');if(!q)return rSearch();const r=await API.search(q);$('#sr').innerHTML=(r.communities.length?`<div class="h2">Communautés</div>`+r.communities.map(c=>`<div class="nt" data-c="${c.id}" style="cursor:pointer"><div class="th ${ms[c.g]}" style="width:46px;height:46px;border-radius:14px"></div><p><b>${esc(c.name)}</b></p></div>`).join(''):'')+(r.posts.length?`<div class="h2">Publications</div>`+r.posts.map(postHTML).join(''):'')+(!r.communities.length&&!r.posts.length&&!r.profiles.length?emp('Aucun résultat','Essaie un autre mot-clé.'):'')},250)});
+let sqt;$('#sq').addEventListener('input',()=>{clearTimeout(sqt);sqt=setTimeout(async()=>{const q=$('#sq').value.trim().replace(/^#/,'');if(!q)return rSearch();const r=await API.search(q);$('#sr').innerHTML=(r.profiles.length?`<div class="h2">Profils</div>`+r.profiles.map((p,i)=>`<div class="nt" data-u="${p.id}"><div>${av({name:p.name,avatar:p.avatar},i)}</div><p><b>${esc(p.name)}</b><br><span>@${esc(p.handle)}</span></p></div>`).join(''):'')+(r.communities.length?`<div class="h2">Communautés</div>`+r.communities.map(c=>`<div class="nt" data-c="${c.id}" style="cursor:pointer"><div class="th ${ms[c.g]}" style="width:46px;height:46px;border-radius:14px"></div><p><b>${esc(c.name)}</b></p></div>`).join(''):'')+(r.posts.length?`<div class="h2">Publications</div>`+r.posts.map(postHTML).join(''):'')+(!r.communities.length&&!r.posts.length&&!r.profiles.length?emp('Aucun résultat','Essaie un autre mot-clé.'):'')},250)});
 document.addEventListener('click',async e=>{const q=e.target.closest('[data-q]');if(q){await go('search');$('#sq').value=q.dataset.q;$('#sq').dispatchEvent(new Event('input'))}});
 
 /* ---- communautés ---- */
@@ -609,7 +754,7 @@ $('#cnf').addEventListener('submit',async e=>{e.preventDefault();const n=$('#cn'
 async function openC(i){CD=i;await go('cdet')}
 async function rCdet(){const c=await API.communities.get(CD);if(!c)return go('comm');const lock=c.priv&&!c.joined,ps=lock?[]:await API.posts.list({community:c.id}),ad=c.mine?await API.communities.admin(c.id):null;
  $('#cdet').innerHTML=`<div class="bar"><button class="ib" data-go="comm" aria-label="Retour">${I('back')}</button><h1>${esc(c.name)}</h1></div><div class="cvr ${ms[c.g]}"></div><div style="padding:0 4px"><p style="color:var(--mu)">${fm(c.members)} membres · ${c.priv?'Privée':'Publique'}</p><p style="margin:6px 0 14px">${esc(c.desc)}</p>${c.mine?'<span class="sl">Tu administres cette communauté</span>':c.joined?'<span class="sl">Tu es membre</span>':`<button class="fb" data-join="${c.id}">Rejoindre</button>`}</div>
- ${ad?`<div class="cd" style="margin-top:14px"><h3>Administration</h3><button class="fb" data-inv="${c.id}" style="width:100%;padding:12px;margin-bottom:12px">Copier le lien d’invitation</button><label class="fld">Règles de la communauté<input data-rules="${c.id}" value="${esc(c.rules||'')}" maxlength="140"></label><div class="h2" style="font-size:13px">Membres et rôles</div>${ad.members.length?ad.members.map(m=>`<div class="rowx"><b style="flex:1">${esc(m.name)}</b><span>${esc(m.role)}</span></div>`).join(''):emp('Aucun autre membre','Les rôles apparaîtront quand des membres rejoindront.')}<div class="h2" style="font-size:13px">Signalements (${ad.reports.length})</div>${ad.reports.length?ad.reports.map(r=>`<div class="rowx"><div style="flex:1"><b>${esc(r.who)}</b><small>${esc(r.why)}</small></div></div>`).join(''):emp('Aucun signalement','Rien à traiter pour le moment.')}</div>`:''}
+ ${ad?`<div class="cd" style="margin-top:14px"><h3>Administration</h3><button class="fb" data-inv="${c.id}" style="width:100%;padding:12px;margin-bottom:12px">Copier le lien d’invitation</button><label class="fld">Règles de la communauté<input data-rules="${c.id}" value="${esc(c.rules||'')}" maxlength="140"></label><div class="h2" style="font-size:13px">Membres et rôles</div>${ad.members.length?ad.members.map(m=>`<div class="rowx"><b style="flex:1" ${m.id?`data-u="${m.id}"`:''}>${esc(m.name)}</b><span>${esc(m.role)}</span></div>`).join(''):emp('Aucun autre membre','Les rôles apparaîtront quand des membres rejoindront.')}<div class="h2" style="font-size:13px">Signalements (${ad.reports.length})</div>${ad.reports.length?ad.reports.map(r=>`<div class="rowx"><div style="flex:1"><b>${esc(r.who)}</b><small>${esc(r.why)}</small></div></div>`).join(''):emp('Aucun signalement','Rien à traiter pour le moment.')}</div>`:''}
  <div class="h2" style="margin-top:18px">Publications${c.joined?`<span data-go="create" data-mode="Post">Publier</span>`:''}</div>${lock?emp('Communauté privée','Rejoins la communauté pour voir les publications.'):ps.length?ps.map(postHTML).join(''):emp('Aucune publication','Sois le premier à publier ici.')}`;watchViews('#cdet')}
 document.addEventListener('click',e=>{const v=e.target.closest('[data-inv]');if(v)copy(API.communities.invite(v.dataset.inv))});
 document.addEventListener('change',async e=>{const r=e.target.closest('[data-rules]');if(r){await API.communities.update(r.dataset.rules,{rules:r.value.slice(0,140)});toast('Règles enregistrées')}});
@@ -641,7 +786,9 @@ const RT={async onMessage(r){if(CUR==='chat'&&r.conversation_id===CC){await API.
 function rAuth(){$$('#am button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.a===AM));$('#af').innerHTML=(AM==='up'?`<label class="fld">Nom affiché<input name="name" required maxlength="40" autocomplete="name"></label><label class="fld">Identifiant<input name="handle" required maxlength="24" placeholder="ex. alex.flux" autocapitalize="none" autocomplete="username"></label>`:'')+`<label class="fld">E-mail<input name="email" type="email" required autocomplete="email"></label><label class="fld">Mot de passe<input name="pw" type="password" required minlength="8" autocomplete="${AM==='up'?'new-password':'current-password'}"></label><button class="fb" style="width:100%;padding:14px;font-size:14px">${AM==='up'?'Créer mon profil':'Me connecter'}</button><p id="aerr" role="alert" style="color:#e5484d;font-size:13px;margin-top:10px"></p>`}
 $('#am').addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b){AM=b.dataset.a;rAuth()}});
 $('#af').addEventListener('submit',async e=>{e.preventDefault();const f=Object.fromEntries(new FormData(e.target));try{ME=AM==='up'?await API.auth.signUp(f):await API.auth.signIn(f);await enter()}catch(x){$('#aerr').textContent=x.message}});
-async function enter(){applyP(API.settings.get('palette')??0);applyM(API.settings.get('mode')||'auto');await go('home');API.realtime.start(RT);if(!API.settings.get('fxseen')){API.settings.set('fxseen',1);fxOpen('Bienvenue sur Floxly. Je suis Fluxus, ton assistant. Je peux t’aider à découvrir l’application et à protéger ton compte. Tu peux me fermer à tout moment.')}}
+async function openHash(){const h=location.hash;if(!h||!ME)return;try{if(h.startsWith('#u-')){const i=await API.profiles.byHandle(h.slice(3));if(i)await openU(i)}else if(h.startsWith('#c-'))await openC(h.slice(3));else if(h.startsWith('#post-')){const p=await API.posts.get(h.slice(6));if(p)modal(postHTML(p))}}catch(_){}}
+addEventListener('hashchange',openHash);
+async function enter(){applyP(API.settings.get('palette')??0);applyM(API.settings.get('mode')||'auto');await go('home');API.realtime.start(RT);openHash();if(!API.settings.get('fxseen')){API.settings.set('fxseen',1);fxOpen('Bienvenue sur Floxly. Je suis Fluxus, ton assistant. Je peux t’aider à découvrir l’application et à protéger ton compte. Tu peux me fermer à tout moment.')}}
 
 /* ---- Fluxus ---- */
 const orb=$('#orb'),fx=$('#fx');let ox=innerWidth-84,oy=innerHeight-190,dr=null;
@@ -650,21 +797,22 @@ function place(){ox=Math.min(Math.max(8,ox),innerWidth-68);oy=Math.min(Math.max(
 orb.addEventListener('pointerdown',e=>{orb.setPointerCapture(e.pointerId);dr={x:e.clientX-ox,y:e.clientY-oy,sx:e.clientX,sy:e.clientY,m:false}});
 orb.addEventListener('pointermove',e=>{if(!dr)return;if(Math.hypot(e.clientX-dr.sx,e.clientY-dr.sy)>5)dr.m=true;if(dr.m){ox=e.clientX-dr.x;oy=e.clientY-dr.y;place()}});
 orb.addEventListener('pointerup',()=>{if(dr&&!dr.m){if(fx.classList.contains('on'))fx.classList.remove('on');else fxOpen($('#fxm').textContent||'Pose-moi une question.')}dr=null});
-$('#fxc').addEventListener('click',()=>fx.classList.remove('on'));addEventListener('keydown',e=>{if(e.key==='Escape'){fx.classList.remove('on');closeAll()}});
+$('#fxc').addEventListener('click',()=>fx.classList.remove('on'));addEventListener('keydown',e=>{if(e.key==='Escape'){fx.classList.remove('on');closeAll();$('#lb').hidden=true}});
 $('#fxf').addEventListener('submit',async e=>{e.preventDefault();const t=$('#fxi').value.trim();if(!t)return;$('#fxi').value='';$('#fxm').textContent='…';const r=await API.fluxus.ask(t);$('#fxm').textContent=r.text});
 $('#tgo').addEventListener('click',e=>{const b=e.currentTarget,on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);API.settings.set('orb',on);orb.style.display=on?'':'none';if(!on)fx.classList.remove('on')});
 
 /* ---- démarrage ---- */
-const RV={pview:rPview,auth:rAuth,home:rHome,shorts:rShorts,create:rCreate,msgs:rMsgs,chat:rChat,profile:rProfile,editp:rEditP,notifs:rNotifs,settings:rSettings,sched:rSched,comm:rComm,cdet:rCdet,search:rSearch};
+const RV={studio:rStudio,pview:rPview,auth:rAuth,home:rHome,shorts:rShorts,create:rCreate,msgs:rMsgs,chat:rChat,profile:rProfile,editp:rEditP,notifs:rNotifs,settings:rSettings,sched:rSched,comm:rComm,cdet:rCdet,search:rSearch};
 document.addEventListener('click',async e=>{
  let x;
  if(x=e.target.closest('.ch>button,.tb>button,.md2>button,.sg>button')){if(x.hasAttribute('aria-pressed')){[...x.parentNode.children].forEach(b=>b.hasAttribute('aria-pressed')&&b.setAttribute('aria-pressed','false'));x.setAttribute('aria-pressed','true')}}
- if(x=e.target.closest('[data-go]')){if(x.dataset.mode){CMODE=x.dataset.mode;CMEDIA=null}return go(x.dataset.go)}
+ if(x=e.target.closest('[data-go]')){if(x.dataset.mode){CMODE=x.dataset.mode;CMEDIA=[]}return go(x.dataset.go)}
  if(x=e.target.closest('[data-act]'))return doAct(x.dataset.act,x.dataset.id);
- if(x=e.target.closest('[data-h]')){const i=await API.profiles.byHandle(x.dataset.h);return i?openU(i):toast('Profil introuvable')}
- if(x=e.target.closest('[data-u]'))return openU(x.dataset.u);
+ if(x=e.target.closest('[data-h]')){const i=await API.profiles.byHandle(x.dataset.h);if(i)closeAll();return i?openU(i):toast('Profil introuvable')}
+ if(x=e.target.closest('[data-u]'))return x.dataset.u?(closeAll(),openU(x.dataset.u)):null;
  if(x=e.target.closest('[data-pm]')){try{const c=await API.messages.start(x.dataset.pm);closeAll();return openChat(c)}catch(z){toast(z.message);return}}
- if(x=e.target.closest('[data-sv]'))return openStory(x.dataset.sv);
+ if(x=e.target.closest('[data-sg]'))return openStories(+x.dataset.sg);
+ if(x=e.target.closest('[data-lb]'))return openLb(x.dataset.lb,+x.dataset.i);
  if(x=e.target.closest('[data-sh]')){SHF=x.dataset.sh;return go('shorts')}
  if(x=e.target.closest('[data-conv]')){closeAll();return openChat(x.dataset.conv)}
  if(x=e.target.closest('[data-join]')){try{const r=await API.communities.join(x.dataset.join);toast(r==='en_attente'?'Demande envoyée aux administrateurs':'Communauté rejointe');refresh()}catch(z){toast(z.message)}return}
@@ -674,7 +822,7 @@ document.addEventListener('click',async e=>{
 });
 (async()=>{const s=API.settings;applyP(s.get('palette')??0);applyM(s.get('mode')||'auto');if(s.get('orb')===false)orb.style.display='none';
  ME=await API.auth.me();applyP(s.get('palette')??0);applyM(s.get('mode')||'auto');if(s.get('orb')===false)orb.style.display='none';
- if(!ME||API.auth.out()){rAuth();go('auth')}else{await API.sched.flush();await go('home');API.realtime.start(RT)}
+ if(!ME||API.auth.out()){rAuth();go('auth')}else{await API.sched.flush();await go('home');API.realtime.start(RT);openHash()}
  setInterval(async()=>{if(ME&&await API.sched.flush())refresh()},30000)})();
 
 </script>
