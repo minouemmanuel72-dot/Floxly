@@ -1,0 +1,38 @@
+{
+  "name": "Floxly",
+  "short_name": "Floxly",
+  "description": "Le réseau social des créateurs. Connecte, crée, partage.",
+  "lang": "fr",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ECEBE8",
+  "theme_color": "#7C5CFF",
+  "categories": [
+    "social",
+    "entertainment"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
