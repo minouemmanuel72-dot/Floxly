@@ -302,6 +302,11 @@ body.onsh #orb,body.onsh #fx{display:none!important}
 #fxhi{position:fixed;z-index:13;max-width:230px;padding:11px 14px;border-radius:18px 18px 4px 18px;background:var(--gl);border:1px solid var(--ln);backdrop-filter:blur(22px);box-shadow:var(--sh);font-size:13px;line-height:1.35;color:var(--tx);opacity:0;transform:translateY(8px) scale(.96);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
 #fxhi.on{opacity:1;transform:none;pointer-events:auto}#fxhi b{display:block;font-size:12px;margin-bottom:2px;background:var(--g2);-webkit-background-clip:text;background-clip:text;color:transparent}
 
+#fab,.fabghost{position:fixed;z-index:11;width:58px;height:58px;border-radius:21px;border:0;display:grid;place-items:center;color:#fff;background:var(--g2);box-shadow:0 12px 30px color-mix(in srgb,var(--a) 50%,transparent);touch-action:none;user-select:none;-webkit-user-select:none}
+#fab svg,.fabghost svg{width:26px;height:26px}#fab[hidden]{display:none}body.nonav #fab,body.onsh #fab{display:none}
+.fabghost{z-index:60;transform:scale(1.12);pointer-events:none;opacity:.96}#fab.fabdrag{z-index:60;transform:scale(1.12)}
+.tab.cr2{touch-action:none}#nav.drop{outline:2px dashed var(--a);outline-offset:4px;border-radius:28px}
+body.fabout #home .bar [data-go=msgs]{display:none}
 /*ADD_CSS*/
 </style>
 </head>
@@ -409,6 +414,7 @@ try{if(AC){ctx=new AC();var p=ctx.resume&&ctx.resume();Promise.race([Promise.res
 <section class="v full" id="sv"></section>
 </main>
 <nav id="nav"></nav>
+<button id="fab" hidden data-go="create" data-mode="Post" aria-label="Créer (déplaçable)"></button>
 <button id="orb" aria-label="Fluxus, assistant de Floxly (déplaçable)"></button>
 <div id="fx" role="dialog" aria-label="Fluxus"><b><i></i>Fluxus<button class="ib" id="fxc" aria-label="Fermer Fluxus" style="margin-left:auto;width:34px;height:34px;border-radius:11px" data-i="x"></button></b><p id="fxm"></p><form id="fxf"><input id="fxi" placeholder="Pose une question à Fluxus" aria-label="Question pour Fluxus" autocomplete="off"><button class="snd" aria-label="Envoyer" data-i="send"></button></form></div>
 <div id="gbk" hidden></div><div class="msh" id="gsh" hidden></div><div id="mdl" hidden></div>
@@ -688,10 +694,31 @@ const pal=[['Aurore','#7C5CFF','#22D3EE','#FF5FA2'],['Océan','#2563EB','#22D3EE
 function applyP(i){const p=pal[i]||pal[0];root.style.setProperty('--a',p[1]);root.style.setProperty('--b',p[2]);root.style.setProperty('--c',p[3]);$$('#sw button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.p===i))}
 function applyM(m){m==='auto'?root.removeAttribute('data-theme'):root.setAttribute('data-theme',m);$$('#mode button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===m))}
 $('#sw').innerHTML=pal.map((p,i)=>`<button aria-pressed="false" data-p="${i}"><i style="background:linear-gradient(135deg,${p[1]},${p[2]},${p[3]})"></i>${p[0]}</button>`).join('');
-$('#nav').innerHTML=[['home','Accueil','home'],['pln','Planches','refs'],['create','Créer','plus'],['shorts','Shorts','play'],['profile','Profil','user']].map((t,i)=>`<button class="tab ${i==2?'cr2':''}" data-go="${t[0]}" ${t[0]==='create'?'data-mode="Post"':''} aria-label="${t[1]}">${I(t[2])}</button>`).join('');
+const FABK='floxly:fab';let FAB=null;try{FAB=JSON.parse(localStorage.getItem(FABK)||'null')}catch(_){}
+function markNav(){const k=CUR in NAVK?NAVK[CUR]:CUR;$$('.tab').forEach(t=>k&&t.dataset.go===k&&t.dataset.go!=='create'?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'))}
+function placeFab(){const f=$('#fab');if(!FAB)return;f.style.left=Math.min(Math.max(8,FAB.x*innerWidth-29),innerWidth-66)+'px';f.style.top=Math.min(Math.max(8,FAB.y*innerHeight-29),innerHeight-70)+'px'}
+function renderNav(){const mid=FAB?['msgs','Messages','send']:['create','Créer','plus'];
+ $('#nav').innerHTML=[['home','Accueil','home'],['pln','Planches','refs'],mid,['shorts','Shorts','play'],['profile','Profil','user']].map((t,i)=>`<button class="tab ${i==2&&!FAB?'cr2':''}" data-go="${t[0]}" ${t[0]==='create'?'data-mode="Post"':''} aria-label="${t[1]}">${I(t[2])}${t[0]==='msgs'?'<span class="nb" id="nbadge" hidden></span>':''}</button>`).join('');
+ document.body.classList.toggle('fabout',!!FAB);NAVK.msgs=FAB?'msgs':'';NAVK.chat=FAB?'msgs':'';
+ const f=$('#fab');f.hidden=!FAB;f.innerHTML=I('plus');f.classList.remove('fabdrag');if(FAB)placeFab();markNav();refreshBadges()}
+addEventListener('resize',()=>{if(FAB)placeFab()});
+const inNav=(x,y)=>{const r=$('#nav').getBoundingClientRect();return x>=r.left-24&&x<=r.right+24&&y>=r.top-34&&y<=r.bottom+14};
+let FD=null,FSUP=0;
+document.addEventListener('pointerdown',e=>{const t=e.target.closest('.tab.cr2,#fab');if(!t)return;const r=t.getBoundingClientRect();FD={el:t,id:e.pointerId,sx:e.clientX,sy:e.clientY,dx:e.clientX-r.left,dy:e.clientY-r.top,m:false,nav:t.classList.contains('cr2'),g:null}});
+document.addEventListener('pointermove',e=>{if(!FD||e.pointerId!==FD.id)return;
+ if(!FD.m){if(Math.hypot(e.clientX-FD.sx,e.clientY-FD.sy)<10)return;FD.m=true;if(FD.nav){const g=document.createElement('div');g.className='fabghost';g.innerHTML=I('plus');document.body.appendChild(g);FD.g=g;FD.el.style.visibility='hidden'}else FD.el.classList.add('fabdrag');try{navigator.vibrate&&navigator.vibrate(12)}catch(_){}}
+ const t=FD.g||FD.el;t.style.left=(e.clientX-(FD.nav?29:FD.dx))+'px';t.style.top=(e.clientY-(FD.nav?29:FD.dy))+'px';$('#nav').classList.toggle('drop',inNav(e.clientX,e.clientY))});
+const fabUp=e=>{if(!FD||e.pointerId!==FD.id)return;const d=FD;FD=null;$('#nav').classList.remove('drop');if(d.g)d.g.remove();if(d.el)d.el.style.visibility='';if(!d.m)return;FSUP=Date.now();
+ const inn=e.type!=='pointercancel'&&inNav(e.clientX,e.clientY);
+ if(d.nav){if(!inn)FAB={x:e.clientX/innerWidth,y:e.clientY/innerHeight}}
+ else{FAB=inn?null:{x:e.clientX/innerWidth,y:e.clientY/innerHeight}}
+ try{FAB?localStorage.setItem(FABK,JSON.stringify(FAB)):localStorage.removeItem(FABK)}catch(_){}
+ renderNav();if(FAB&&d.nav)toast('Messages est maintenant dans la barre. Glisse + sur la barre pour le remettre.')};
+document.addEventListener('pointerup',fabUp);document.addEventListener('pointercancel',fabUp);
+document.addEventListener('click',e=>{if(Date.now()-FSUP<500&&e.target.closest('.tab,#fab')){e.stopImmediatePropagation();e.preventDefault()}},true);
 ico();
 
-const noNav=['auth','create','chat','settings','call','sv','editp','studio','onb','rdr'],NAVK={studio:'',pview:'',msgs:'',chat:'',notifs:'',search:'',settings:'profile',editp:'profile',sub:'profile',sched:'profile',comm:'',cnew:'',cdet:'',call:'',sv:'home',rdr:'pln'};
+const noNav=['auth','create','chat','settings','call','sv','editp','studio','onb','rdr'],NAVK={studio:'',pview:'',msgs:'',chat:'',notifs:'',search:'',settings:'profile',editp:'profile',sub:'profile',sched:'profile',comm:'',cnew:'',cdet:'',call:'',sv:'home',rdr:'pln'};renderNav();
 function go(v){document.body.classList.toggle('insok',v==='home'||v==='auth');document.body.classList.toggle('onsh',v==='shorts'||v==='studio'||v==='create'||v==='rdr');if(CUR==='shorts'&&v!=='shorts')flushWatch();CUR=v;$$('.v').forEach(e=>e.classList.toggle('on',e.id===v));document.body.classList.toggle('nonav',noNav.includes(v));const k=v in NAVK?NAVK[v]:v;$$('.tab').forEach(t=>k&&t.dataset.go===k&&t.dataset.go!=='create'?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(v!=='shorts')$$('#scs video').forEach(x=>x.pause());const r=RV[v];return r?r():null}
 const refresh=()=>RV[CUR]?RV[CUR]():null;
 const av=(a,i=0)=>a&&a.avatar?`<div class="av" style="background:center/cover url(${a.avatar})"></div>`:`<div class="av ${gs[i%3]}">${esc((a?.name||'?')[0]).toUpperCase()}</div>`;
@@ -1051,7 +1078,7 @@ function gText(g){if(!g.verb)return esc(g.text);const ac=gActors(g),nm=ac.map(a=
 async function rNotifs(){const all=visibleNotifs(await API.notifications.list()).filter(n=>NF==='all'||n.type===NF);NGR=groupN(all);
  $('#nl').innerHTML=NGR.length?NGR.map((g,i)=>`<div class="nt ${g.read?'':'unr'}" data-ng="${i}" style="cursor:pointer"><div class="nga">${av(gActors(g)[0]||{name:'F'},0)}${gActors(g).length>1?`<i class="ngb">+${gActors(g).length-1}</i>`:''}</div><p>${gText(g)} <span>${ago(g.at)}</span></p></div>`).join(''):emp('Aucune notification','Tes mentions, abonnés et activités apparaîtront ici.');
  await API.notifications.markRead();refreshBadges()}
-async function refreshBadges(){if(!ME)return;try{const [nt,cv]=await Promise.all([API.notifications.list(),API.messages.conversations()]),nn=visibleNotifs(nt).filter(n=>!n.read).length,mm=cv.reduce((s,c)=>s+(c.unread||0),0),d=$('#ndot');d.textContent=nn>9?'9+':(nn||'');d.classList.toggle('cnt',nn>0);d.hidden=nn===0;const b=$('#mbadge');if(b){b.textContent=mm>9?'9+':mm;b.hidden=mm===0}}catch(_){}}
+async function refreshBadges(){if(!ME)return;try{const [nt,cv]=await Promise.all([API.notifications.list(),API.messages.conversations()]),nn=visibleNotifs(nt).filter(n=>!n.read).length,mm=cv.reduce((s,c)=>s+(c.unread||0),0),d=$('#ndot');d.textContent=nn>9?'9+':(nn||'');d.classList.toggle('cnt',nn>0);d.hidden=nn===0;const b=$('#mbadge');if(b){b.textContent=mm>9?'9+':mm;b.hidden=mm===0}const b2=$('#nbadge');if(b2){b2.textContent=mm>9?'9+':mm;b2.hidden=mm===0}}catch(_){}}
 document.addEventListener('click',async e=>{const gp=e.target.closest('[data-ngp]');if(gp){const p=await API.posts.get(gp.dataset.ngp);if(p){closeAll();modal(postHTML(p))}else toast('Publication introuvable');return}const n=e.target.closest('[data-ng]');if(!n)return;const g=NGR[+n.dataset.ng];if(!g)return;const ac=gActors(g);if(ac.length>1){modal(`<div class="ngh">${gText(g)}</div><div class="ngl">${ac.map((a,i)=>`<div class="nt" data-u="${a.id}"><div>${av(a,i)}</div><p><b>${esc(a.name)}</b></p></div>`).join('')}</div>${g.post?`<button type="button" class="fb ngv" data-ngp="${g.post}">Voir la publication</button>`:''}`);return}if(g.post){const p=await API.posts.get(g.post);if(p)modal(postHTML(p))}else if(g.verb==='request')openConf();else{const f=g.items[0]&&g.items[0].fromId;if(f)openU(f)}});
 $('#nfc').addEventListener('click',e=>{const b=e.target.closest('[data-nf]');if(b){NF=b.dataset.nf;rNotifs()}});
 
