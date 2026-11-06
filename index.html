@@ -307,6 +307,11 @@ body.onsh #orb,body.onsh #fx{display:none!important}
 .fabghost{z-index:60;transform:scale(1.12);pointer-events:none;opacity:.96}#fab.fabdrag{z-index:60;transform:scale(1.12)}
 .tab.cr2{touch-action:none}#nav.drop{outline:2px dashed var(--a);outline-offset:4px;border-radius:28px}
 body.fabout #home .bar [data-go=msgs]{display:none}
+.sout,.sp>.sout{position:absolute!important;inset:0;z-index:6;background:#0B0A18;display:grid;place-content:center;justify-items:center;gap:14px;opacity:0;animation:soutIn .25s ease forwards;cursor:pointer}.sout.bye{animation:soutOut .4s ease forwards}
+@keyframes soutIn{to{opacity:1}}@keyframes soutOut{from{opacity:1}to{opacity:0}}
+.sout svg{width:128px;height:128px;overflow:visible;animation:splPulse .45s ease .75s}.sout .soutp{transform-box:fill-box;transform-origin:center;opacity:0;animation:splIn .75s cubic-bezier(.18,.9,.26,1.12) var(--d) forwards}
+.sout .soutw{font:700 30px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;letter-spacing:-.04em;background:linear-gradient(135deg,#FF5FA2,#7C5CFF 55%,#22D3EE);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;animation:splWm .5s ease .95s forwards}
+.sp.outro .big{display:none!important}
 /*ADD_CSS*/
 </style>
 </head>
@@ -817,6 +822,16 @@ let IO=null,STAB='pour_toi',SMUTE=true;
 const SPK=m=>`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#fff"/>${m?'<path d="M17 9l5 6M22 9l-5 6"/>':'<path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/>'}</svg>`;
 const STABS=[['pour_toi','Pour toi'],['influenceurs','Influenceurs'],['amis','Amis'],['entreprises','Entreprises']];
 document.addEventListener('click',e=>{const b=e.target.closest('[data-stab]');if(b){STAB=b.dataset.stab;rShorts()}});
+const OUTD=new Set();let OAC=null;
+function outChime(){try{if(SMUTE)return;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;OAC=OAC||new AC();if(OAC.state==='suspended')OAC.resume();if(OAC.state!=='running')return;const c=OAC,t=c.currentTime+.02,tn=(f,s,du,v,ty)=>{const o=c.createOscillator(),g=c.createGain();o.type=ty||'sine';o.frequency.value=f;g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(v,s+.01);g.gain.exponentialRampToValueAtTime(.0001,s+du);o.connect(g);g.connect(c.destination);o.start(s);o.stop(s+du+.05)};[523.25,659.25,783.99,1046.5].forEach((f,i)=>tn(f,t+.3+i*.08,.45,.09,'triangle'));[523.25,783.99,1046.5].forEach((f,i)=>tn(f,t+.85+i*.025,1,.045))}catch(_){}}
+function shOutro(s,v){v.pause();s.classList.add('outro');
+ const o=document.createElement('div');o.className='sout';o.innerHTML=`<svg viewBox="12 12 76 76"><defs><linearGradient id="soP" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF5FA2"/><stop offset="1" stop-color="#7C5CFF"/></linearGradient><linearGradient id="soQ" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs>
+<path class="soutp" style="--x:-170px;--y:-150px;--r:-140deg;--d:0s" d="M22 22 H56 L47 50 H22Z" fill="url(#soP)" stroke="url(#soP)" stroke-width="6" stroke-linejoin="round"/>
+<path class="soutp" style="--x:180px;--y:-130px;--r:160deg;--d:.08s" d="M64 22 H78 V50 H55Z" fill="url(#soQ)" stroke="url(#soQ)" stroke-width="6" stroke-linejoin="round"/>
+<path class="soutp" style="--x:-160px;--y:170px;--r:120deg;--d:.16s" d="M22 60 H44 L48 78 H22Z" fill="url(#soQ)" stroke="url(#soQ)" stroke-width="6" stroke-linejoin="round"/>
+<path class="soutp" style="--x:170px;--y:160px;--r:-170deg;--d:.24s" d="M54 60 H78 V78 H58Z" fill="url(#soP)" stroke="url(#soP)" stroke-width="6" stroke-linejoin="round"/></svg><div class="soutw">floxly</div>`;
+ s.appendChild(o);outChime();let done=false;const end=()=>{if(done)return;done=true;o.classList.add('bye');setTimeout(()=>{o.remove();s.classList.remove('outro');if(CUR==='shorts')v.play().catch(()=>{})},400)};
+ o.addEventListener('click',e=>{e.stopPropagation();end()});setTimeout(end,1700)}
 async function rShorts(){loadFonts();const W=hiddenWords(),sh=(await API.posts.list({kinds:['Short'],tab:STAB,rank:true})).filter(p=>okPost(p,W));let FOL=new Set();try{FOL=new Set((await API.profiles.following(ME.id)).map(x=>x.id))}catch(_){}if(IO)IO.disconnect();
  $('#stabs').innerHTML=STABS.map(([k,n])=>`<button type="button" data-stab="${k}" class="${k===STAB?'on':''}">${n}</button>`).join('');
  $('#scs').innerHTML=sh.length?sh.map(p=>{const m=p.media[0],l=p.likes.includes(ME.id),fx=m&&m.fx;return`<div class="sp" data-id="${p.id}">${m&&m.url?`<video class="bgm" src="${m.url}" ${m.poster?`poster="${m.poster}"`:''} loop playsinline muted></video>`:`<div class="bgm ${ms[hz(p.id)%3]}"></div>`}<div class="sh2"></div><div class="wm"><i></i>@${esc(p.author.handle)}</div>${fx&&fx.text?`<div class="fxf" style="${txtStyle(fx)}">${esc(fx.text)}</div>`:''}<div class="rl"><button data-act="lk" data-id="${p.id}" aria-pressed="${l}"><span class="rb">${I('heart')}</span>${p.likes.length}</button><button data-act="cm" data-id="${p.id}"><span class="rb">${I('comment')}</span>${p.comments.length}</button><button data-act="sa" data-id="${p.id}"><span class="rb">${I('mark')}</span>Sauver</button><button data-act="sh" data-id="${p.id}"><span class="rb">${I('share')}</span>Partager</button>${m&&m.url?`<button data-mute aria-label="Activer ou couper le son"><span class="rb">${SPK(SMUTE)}</span></button>`:''}</div>${m&&m.url?`<input class="sk" type="range" min="0" max="1000" value="0" aria-label="Position dans la vidéo"><div class="tm">0:00</div>`:''}<div class="big"><span><svg viewBox="0 0 24 24" width="34" height="34" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span></div><div class="skf"></div><div class="cp2"><div class="who2" data-u="${p.author.id}">${av(p.author,hz(p.author.id))}<b>@${esc(p.author.handle)}${vb(p.author)}</b>${p.author.id!==ME.id&&!FOL.has(p.author.id)?`<button class="sf" data-shf="${p.author.id}">Suivre</button>`:''}</div><p>${rich(p.text)}</p></div></div>`}).join('')
@@ -825,6 +840,7 @@ async function rShorts(){loadFonts();const W=hiddenWords(),sh=(await API.posts.l
  $$('#scs .sp').forEach(s=>{const v=s.querySelector('video.bgm'),sk=s.querySelector('.sk'),tm=s.querySelector('.tm');if(!v||!sk)return;
   const fmt=t=>{t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+':'+String(t%60).padStart(2,'0')};
   const upd=()=>{const d=isFinite(v.duration)&&v.duration>0;if(!s.classList.contains('drag')&&d)sk.value=Math.round(v.currentTime/v.duration*1000);sk.style.setProperty('--p',(sk.value/10)+'%');tm.textContent=fmt(v.currentTime)+(d?' / '+fmt(v.duration):'')};
+  {const fxm=((sh.find(p=>p.id===s.dataset.id)||{}).media||[{}])[0].fx||{};let lt=0;v.addEventListener('timeupdate',()=>{const c=v.currentTime,end=fxm.trimEnd||v.duration;if(lt>end-.9&&c<lt-.8&&!s.classList.contains('drag')&&!OUTD.has(s.dataset.id)&&!s.classList.contains('outro')){OUTD.add(s.dataset.id);shOutro(s,v)}lt=c})}
   v.addEventListener('timeupdate',upd);v.addEventListener('loadedmetadata',upd);
   v.addEventListener('pause',()=>s.classList.add('paused'));v.addEventListener('play',()=>s.classList.remove('paused'));
   sk.addEventListener('input',()=>{s.classList.add('drag');if(isFinite(v.duration))v.currentTime=sk.value/1000*v.duration;upd()});
