@@ -1,7 +1,7 @@
 /* Floxly – sw.js : lancement hors ligne de l'interface + affichage des notifications push.
    Ne met en cache QUE les fichiers de ce site (jamais Supabase, jamais les données).
    Pour publier une mise à jour, change VERSION. */
-const VERSION = 'floxly-b15';
+const VERSION = 'floxly-b16';
 const CORE = ['./', 'index.html', 'config.js', 'manifest.webmanifest',
   'icons/favicon.svg', 'icons/mark.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/apple-touch-icon.png'];
 self.addEventListener('install', e => e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting())));
